@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+.logo {
+  font-family: 'Black Ops One', cursive;
+}

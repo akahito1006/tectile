@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :articles,  only: [:index, :show, :edit, :update, :destroy]
     resources :users,     only: [:index, :show, :edit, :update, :destroy]
-
     get '/users/unsubscribe' => 'users#unsubscribe'
     get '/search' => 'searches#search'
   end
