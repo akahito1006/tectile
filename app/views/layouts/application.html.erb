@@ -13,7 +13,7 @@
       <div class="container">
         <div class="row">
           <div class="col">
-            <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <nav class="navbar navbar-expand-md navbar-light px-0 bg-light">
               <%= link_to "TecTile", root_path, class:"my-0 h1 logo text-dark font-weight-bold text-decoration-none" %>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcontent" aria-controls="navbarcontent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,12 +40,9 @@
               </div>
             </nav>
           </div>
-        </div>
-        
-        <div class="row">
-          <div class="col-lg-4 ml-auto collapse navbar-collapse" id="navbarsearch">
-            <form class="form-inline mb-2">
-              <input class="form-control" type="search" placeholder="Search..." aria-label="Search" />
+          <div class="col collapse navbar-collapse" id="navbarsearch">
+            <form class="form-inline mb-2 float-md-right">
+              <input class="form-control" type="search" size="30" placeholder="Search..." aria-label="Search" />
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
           </div>
@@ -56,7 +53,7 @@
     <%= yield %>
     <footer class="mt-5 bg-dark">
       <div class="container">
-        <h6 class="text-light text-right py-5">Copyright © TecTile All Rights Reserved.</h6>
+        <h6 class="text-light text-right py-5 mb-0">Copyright © TecTile All Rights Reserved.</h6>
       </div>
     </footer>
   </body>

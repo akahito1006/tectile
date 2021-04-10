@@ -28,6 +28,19 @@
   background-image: url(/assets/smart-home-3096224_640);
   background-size: cover;
   background-position: center;
+  
+  &-content {
+      width: 100%;
+      background-color: rgba(0,0,0,0.5);
+  }
+}
+
+.float {
+  transition: transform 0.2s;
+  
+  &:hover {
+    transform: translate(0, -10%);
+  }
 }
 
 // aboutページ、画像処理多く動作が重いのでサイズ感を揃えておくこと

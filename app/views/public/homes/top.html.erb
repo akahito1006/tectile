@@ -1,7 +1,32 @@
 <div class="container">
+  <div class="row mb-5">
+    <div class="col-8 p-0 mx-auto main-visual text-center d-flex align-items-end">
+        <div class="main-visual-content text-light">
+          ようこそ、TecTileへ！<br />
+          お役立ちガジェット、趣味のIoTの情報投稿サイトです<br />
+          会員登録をすると記事の投稿、いいね・コメントができます
+        </div>
+    </div>
+  </div>
+  
+  <div class="row mb-3">
+    <div class="col">
+      <h4>新着記事</h4>
+    </div>
+  </div>
+  <div class="row mb-3 justify-content-around">
+    <!--% @articles.each do |f| %>-->
+    <% 3.times do |n| %>
+      <div class="col-3 shadow float">
+        <img src="/assets/smart-home-3096224_640" class="img-thumbnail" />
+        <h5><%= "#{n+1}番目の記事" %></h5>
+      </div>
+    <% end %>
+  </div>
+  
   <div class="row">
-    <div class="col-8 mx-auto">
-      <div class="main-visual"></div>
+    <div class="col">
+      <%= link_to "全ての記事を見る", articles_path, class:"h5 fab fa-flipboard float-right" %>
     </div>
   </div>
 </div>
