@@ -21,3 +21,35 @@
 .logo {
   font-family: 'Black Ops One', cursive;
 }
+
+.main-visual {
+  width: 100%;
+  height: 400px;
+  background-image: url(/assets/smart-home-3096224_640);
+  background-size: cover;
+  background-position: center;
+}
+
+// aboutページ、画像処理多く動作が重いのでサイズ感を揃えておくこと
+.about-visual {
+  width: 100%;
+  height: 400px;
+  background-image: url(/assets/smart-home-3096224_640);
+  background-size: cover;
+  background-position: center;
+}
+
+.feature {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  
+  &-right {
+    background-image: url(/assets/smart-home-3096224_640);
+  }
+  
+  &-left {
+    background-image: url(/assets/smart-home-3096224_640);
+  }
+}
