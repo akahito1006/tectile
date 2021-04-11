@@ -10,6 +10,15 @@ Rails.application.routes.draw do
     passwords:      'public/passwords',
     registrations:  'public/registrations'
   }
+  
+# 管理者ゲストログイン
+  devise_scope :admin do
+    post '/admin/guest_session' => 'admin/sessions#guest_session'
+  end
+# 会員ゲストログイン
+  devise_scope :user do
+    post '/users/guest_session' => 'public/sessions#guest_session'
+  end
 
   scope module: :public do
     root 'homes#top'

@@ -17,6 +17,13 @@ class Admin::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  
+  # 管理者ゲスト
+  def guest_session
+    admin = Admin.find(1)
+    sign_in admin
+    redirect_to root_path
+  end
 
   # protected
 
