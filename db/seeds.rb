@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-3.times do |n|
+50.times do |n|
   User.create!(
     name:     "testuser#{n + 1}",
     email:    "testuser#{n + 1}@mail.com",
@@ -19,7 +19,7 @@ Admin.create!(
   password:   "administrator"
 )
 
-3.times do |n|
+50.times do |n|
   Article.create!(
     user_id:  n+1,
     title:    "#{n + 1}件目の投稿記事のタイトル",
