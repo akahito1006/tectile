@@ -21,7 +21,7 @@ Admin.create!(
 
 10.times do |n|
   Article.create!(
-    user_id:  n+1,
+    user_id:  1,
     title:    "#{n + 1}件目の投稿記事のタイトル",
     content:
       "Lorem ipsum dolor sit amet,\r\n
@@ -33,9 +33,13 @@ Admin.create!(
   )
 end
 
-2.times do |n|
+50.times do |n|
   Like.create!(
     user_id:      1,
+    article_id:   1
+  )
+  Like.create!(
+    user_id:      2,
     article_id:   1
   )
 end
@@ -45,5 +49,12 @@ end
     user_id:      n+2,
     article_id:   n+1,
     body: "私も同感です。Lorem ipsum dolor sit amet"
+  )
+end
+
+3.times do |n|
+  Image.create!(
+    article_id:   1,
+    image_id: open("./db/smart-home-3096224_640.jpg")
   )
 end
