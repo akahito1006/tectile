@@ -1,0 +1,48 @@
+<div class="container">
+    <% @user.each do |f| %>
+  <div class="row mb-3">
+    <div class="col-md-3">
+      <h4><%= f.name %>様</h4>
+    </div>
+    <div class="col">
+      <%= link_to "会員情報を編集する", edit_user_registration_path, class:"btn btn-success" %>
+    </div>
+  </div>
+  
+  <div class="row mb-3">
+  <!--投稿バッジ-->
+    <div class="col">
+      <h5>投稿数：<%= f.articles.size %>件</h5>
+      <div class="col  text-light bg-dark">
+        <% f.articles.size.times do |b| %>
+          〇
+        <% end %>
+      </div>
+      <h5>投稿バッジ <%= f.articles.size %>個獲得！</h5>
+    </div>
+    
+  <!--いいねバッジ-->
+    <div class="col">
+      <h5>獲得いいね数：<%= @liked.size %>件</h5>
+      <div class="col  text-light bg-dark">
+        <% @liked.size.times do |b| %>
+          〇
+        <% end %>
+      </div>
+      <h5>いいねバッジ <%= @liked.size %>個獲得！</h5>
+    </div>
+
+  <!--いいね貢献バッジ-->
+    <div class="col">
+      <h5>いいねした数：<%= f.likes.size %>件</h5>
+      <div class="col  text-light bg-dark rounded">
+        <% f.likes.size.times do |b| %>
+          〇
+        <% end %>
+      </div>
+      <h5>いいね貢献バッジ <%= f.likes.size %>個獲得！</h5>
+    </div>
+
+  </div>
+    <% end %>
+</div>
