@@ -23,12 +23,12 @@
       
     <!--いいねバッジ-->
       <div class="col">
-        <h5>獲得いいね数：<%= @liked.size %>件</h5>
+        <h5>獲得いいね数：<%= f.articles.sum(:likes_count) %>件</h5>
         <div class="col text-light bg-dark">
-          <% @liked.size.times do |b| %>
+          <% f.articles.sum(:likes_count).times do |b| %>
             <i class="h4 mt-1 fas fa-medal"></i>
           <% end %>
-          <h5>いいねバッジ <%= @liked.size %>個獲得！</h5>
+          <h5>いいねバッジ <%= f.articles.sum(:likes_count) %>個獲得！</h5>
         </div>
       </div>
   
@@ -49,22 +49,29 @@
       <h4>投稿記事の管理</h4>
     </div>
   </div>
-      <% f.articles.each do |article| %>
-  <div class="row mb-3 d-flex align-items-center">
-    <div class="col-md-2 offset-md-1">
+  
+  <!--@user.each do |f| *above this-->
+  <% f.articles.each do |article| %>
+    <div class="row mb-3 d-flex align-items-center">
+      <div class="col-md-2 offset-md-1">
+<!---------after edit------------>
+         <!--article.images.each do |img| -->
+          
+         <!--end -->
+<!--------------------->
         <img src="/assets/smart-home-3096224_640" class="img-thumbnail" width="200" />
+      </div>
+      <div class="col">
+        <%= article.title %>
+        <%= f.name %>
+        <%= f.updated_at %>
+        いいね <%= article.likes_count %>件
+      </div>
+      <div clas="col">
+        <%= link_to "編集する", edit_article_path(article.id), class:"btn btn-primary" %>
+        <%= link_to "削除する", article_path(article.id), method: :delete, class:"btn btn-danger" %>
+      </div>
     </div>
-    <div class="col">
-      <%= article.title %>
-      <%= f.name %>
-      <%= f.updated_at %>
-      いいね <%= article.likes.size %>件
-    </div>
-    <div clas="col">
-      <%= link_to "編集する", edit_article_path(article.id), class:"btn btn-primary" %>
-      <%= link_to "削除する", article_path(article.id), method: :delete, class:"btn btn-danger" %>
-    </div>
-  </div>
-      <% end %>
+  <% end %>
 </div>
   <% end %>

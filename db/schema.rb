@@ -25,11 +25,12 @@ ActiveRecord::Schema.define(version: 20210406072725) do
   end
 
   create_table "articles", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id",    null: false
-    t.string   "title",      null: false
-    t.string   "content",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id",     null: false
+    t.string   "title",       null: false
+    t.string   "content",     null: false
+    t.integer  "likes_count", null: false
   end
 
   create_table "comments", force: :cascade do |t|

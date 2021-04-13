@@ -6,7 +6,7 @@ class CreateArticles < ActiveRecord::Migration[5.0]
       t.integer :user_id, null: false
       t.string :title, null: false
       t.string :content, null: false
-      
+      t.integer :likes_count, null: false
     end
   end
 end
