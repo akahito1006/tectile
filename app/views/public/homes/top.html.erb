@@ -16,14 +16,20 @@
   </div>
   <div class="row mb-3 justify-content-around">
     <!--% @articles.each do |f| %>-->
-    <% @articles.each do |f| %>
-      <div class="col-3 shadow float">
-        <img src="/assets/smart-home-3096224_640" class="img-thumbnail" />
-        <h5><%= f.title %></h5>
-        <h5><%= f.user.name %></h5>
-        <h5><%= f.likes.size %></h5>
-        <h5><%= f.created_at %></h5>
-      </div>
+    <% if @articles.present? %>
+      <% @articles.each do |f| %>
+        <div class="col-3 shadow float">
+          <img src="/assets/smart-home-3096224_640" class="img-thumbnail" />
+          <h5><%= f.title %></h5>
+          <h5><%= f.user.name %></h5>
+          <h5><%= f.likes.size %></h5>
+          <h5><%= f.created_at %></h5>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col offset-md-1">
+        <h5>投稿記事はありません。</h5>
+    　</div>
     <% end %>
   </div>
   

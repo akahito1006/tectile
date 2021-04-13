@@ -24,11 +24,10 @@ Rails.application.routes.draw do
     root 'homes#top'
     get '/about' => 'homes#about'
     resources :articles,  only: [:index, :show, :new, :create, :edit, :update, :destroy]
-    # resources :users,     only: [:show, :edit, :update, :destroy]
-    resources :users,     only: [:show]
+    resources :users,     only: [:show, :edit, :update, :destroy]
     resource  :likes,     only: [:create, :destroy]
     resources :comments,  only: [:create, :destroy]
-    get '/users/unsubscribe' => 'users#unsubscribe'
+    get '/user/unsubscribe' => 'users#unsubscribe'
     get '/search' => 'searches#search'
   end
 

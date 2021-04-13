@@ -23,7 +23,7 @@ class Public::SessionsController < Devise::SessionsController
     user = User.find_or_create_by!(email: "testuser1@mail.com") do |guest|
       guest.name = "testuser1"
       guest.password = "testpw"
-      guest.password_comfirmation = user.password
+
     end
     
     sign_in user
