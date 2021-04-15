@@ -20,6 +20,6 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-/.env
+/.e
 # Ignore master key for decrypting credentials and more.
 /config/master.key
