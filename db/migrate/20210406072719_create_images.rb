@@ -4,7 +4,7 @@ class CreateImages < ActiveRecord::Migration[5.0]
 
       t.timestamps
       t.integer :article_id, null: false
-      t.string :image_id, null: false
+      t.string :image_id, null: true
     end
   end
 end

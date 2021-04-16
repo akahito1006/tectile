@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col">
+      <h4>新規作成</h4>
+    </div>
+  </div>
+  
+  <%= form_with model: @article, url: articles_path do |f|  %>
+    <div class="row mb-3">
+      <div class="col-md-2">
+        <h5>記事のタイトル</h5>
+      </div>
+      <div class="col">
+        <%= f.text_field :title, autofocus: true, placeholder: "記事のタイトル", class:"col-md-5 form-control" %>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-2">
+        <h5>本文</h5>
+      </div>
+      <div class="col">
+        <%= f.text_area :content, rows: 15, placeholder: "記事の本文。改行できます。", class:"col-md-8 form-control" %>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-2">
+        <h5>画像アップロード（複数選択可）</h5>
+      </div>
+      <div class="col">
+        <%= f.fields_for @image do |img| %>
+          <%= img.attachment_field :image %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-2">
+        <%= f.submit "投稿する" %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
