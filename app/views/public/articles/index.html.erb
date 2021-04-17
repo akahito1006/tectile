@@ -34,7 +34,7 @@
         <%= article.user.name %>
           </li>
           <li>
-        <%= article.updated_at %>
+        <%= article.updated_at.strftime('%Y/%m/%d') %>
           </li>
           <li>
         いいね <%= article.likes_count %>件

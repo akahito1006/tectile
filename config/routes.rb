@@ -23,17 +23,18 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get '/about' => 'homes#about'
-    resources :articles,  only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :users,     only: [:show, :edit, :update, :destroy]
-    resource  :likes,     only: [:create, :destroy]
-    resources :comments,  only: [:create, :destroy]
+    resources :articles,  only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+      resource  :likes,     only: [:create, :destroy]
+      resources :comments,  only: [:create, :destroy]
+    end
     get '/user/unsubscribe' => 'users#unsubscribe'
     get '/search' => 'searches#search'
   end
 
   namespace :admin do
-    resources :articles,  only: [:index, :show, :edit, :update, :destroy]
     resources :users,     only: [:index, :show, :edit, :update, :destroy]
+    resources :articles,  only: [:index, :show, :edit, :update, :destroy]
     get '/search' => 'searches#search'
   end
   

@@ -24,7 +24,7 @@
           <h5><%= f.title %></h5>
           <h5><%= f.user.name %></h5>
           <h5><%= f.likes.size %></h5>
-          <h5><%= f.created_at %></h5>
+          <h5><%= f.created_at.strftime('%Y/%m/%d') %></h5>
         </div>
       <% end %>
     <% else %>

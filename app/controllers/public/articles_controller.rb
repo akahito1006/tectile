@@ -6,7 +6,8 @@ class Public::ArticlesController < ApplicationController
   end
   
   def show
-    @article = Article.find_by(id: params[:id])
+    @article = Article.find(params[:id])
+    @comment = Comment.new
   end
   
   def new
@@ -22,12 +23,18 @@ class Public::ArticlesController < ApplicationController
   end
   
   def edit
+    @article = Article.find(params[:id])
   end
   
   def update
+    @article = Article.find(params[:id])
+    @article.update(article_params)
+    redirect_to article_path(params[:id])
   end
   
   def destroy
+    @article = Article.find(params[:id]).destroy
+    redirect_to articles_path
   end
   
   private

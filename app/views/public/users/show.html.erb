@@ -64,7 +64,7 @@
       <div class="col">
         <%= article.title %>
         <%= f.name %>
-        <%= f.updated_at %>
+        <%= f.updated_at.strftime('%Y/%m/%d') %>
         いいね <%= article.likes_count %>件
       </div>
       <div clas="col">
