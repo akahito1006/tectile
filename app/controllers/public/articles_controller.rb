@@ -11,24 +11,13 @@ class Public::ArticlesController < ApplicationController
   
   def new
     @article = Article.new
-    @image = Image.new
-    
   end
 
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     @article.likes_count = 0
-    if @article.save
-    p "---------------"
-    p @article
-    
-
-    @image = Image.new(image_params)
-    @Image.article_id = 1
-    @Image.save
-    end
-    
+    @article.save
     redirect_to articles_path
   end
   
@@ -43,12 +32,6 @@ class Public::ArticlesController < ApplicationController
   
   private
   def article_params
-    params.require(:article).permit(:id, :title, :content, :user_id)
+    params.require(:article).permit(:title, :content, :user_id, article_images_images: [])
   end
-  
-  def image_params
-    params.require(:image).permit(:id, :article_id, :image)
-    # permit(:title, :content, post_images_images: []
-  end
-
 end
