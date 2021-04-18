@@ -86,14 +86,23 @@
             </nav>
           </div>
           
-          <!--共通：検索窓-->
-          <div class="col collapse navbar-collapse" id="navbarsearch">
-            <form class="form-inline mb-2 float-md-right">
-              <input class="form-control" type="search" size="30" placeholder="Search..." aria-label="Search" />
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-          
+          <!--管理者：検索窓-->
+          <% if current_admin %>
+            <div class="col collapse navbar-collapse" id="navbarsearch">
+              <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :word_for_search, class:"form-control", size:'40',placeholder: "キーワードを入力" %>
+                <%= f.submit "Search", class:"btn btn-outline-success" %>
+              <% end %>
+            </div>
+          <!--会員/一般：検索窓-->
+          <% else %>
+            <div class="col collapse navbar-collapse" id="navbarsearch">
+              <%= form_with url: search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :word_for_search, class:"form-control", size:'40',placeholder: "キーワードを入力" %>
+                <%= f.submit "Search", class:"btn btn-outline-success" %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     </header>
