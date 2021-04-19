@@ -54,15 +54,16 @@
   <% f.articles.each do |article| %>
     <div class="row mb-3 d-flex align-items-center">
       <div class="col-md-2 offset-md-1">
-<!---------after edit------------>
-         <!--article.images.each do |img| -->
-          
-         <!--end -->
-<!--------------------->
-        <img src="/assets/smart-home-3096224_640" class="img-thumbnail" width="200" />
+        <%= link_to article_path(article.id) do %>
+          <% article.article_images.first(1).each do |img| %>
+            <%= attachment_image_tag img, :image, class:"img-thumbnail", width:"200" %>
+          <% end %>
+        <% end %>
       </div>
       <div class="col">
-        <%= article.title %>
+        <%= link_to article_path(article.id) do %>
+          <%= article.title %>
+        <% end %>
         <%= f.name %>
         <%= f.updated_at.strftime('%Y/%m/%d') %>
         いいね <%= article.likes_count %>件

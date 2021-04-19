@@ -2,7 +2,7 @@ class Public::ArticlesController < ApplicationController
   
   def index
     @first_article = Article.first
-    @articles = Article.all.offset(1).eager_load(:user, :likes, :comments)
+    @articles = Article.all.offset(1).eager_load(:user, :likes, :comments, :article_images)
   end
   
   def show

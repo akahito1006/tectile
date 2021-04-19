@@ -8,10 +8,12 @@
     </div>
   </div>
   <div class="row mb-3">
-    <div class="col-md-8 p-0 mx-auto main-visual text-center d-flex align-items-end">
-        <div class="main-visual-content text-light">
-
-        </div>
+    <div class="col-md-8 p-0 mx-auto text-center d-flex align-items-end">
+      <div class="slideshow">
+        <% @article.article_images.each do |img| %>
+          <%= attachment_image_tag img, :image, class:"img-thumbnail", width:"200" %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="row mb-3">

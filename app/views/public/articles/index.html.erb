@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row mb-3">
     <div class="col">
@@ -5,45 +6,47 @@
     </div>
   </div>
   <div class="row mb-3">
-    <div class="col-8 p-0 mx-auto main-visual text-center d-flex align-items-end">
-        <div class="main-visual-content text-light">
-          <h4>
-            <%= link_to @first_article.title, article_path(@first_article.id) %>
-          </h4>
-        </div>
+    <div class="col-8 p-0 mx-auto text-center">
+      <div class="slideshow">
+        <% @first_article.article_images.each do |img| %>
+          <%= attachment_image_tag img, :image, class:"img-thumbnail", width:"200" %>
+        <% end %>
+      </div>
+      <div class="main-visual-content text-light">
+        <h4>
+          <%= link_to @first_article.title, article_path(@first_article.id) %>
+        </h4>
+      </div>
     </div>
   </div>
 
 <!--2件目以降, Article.all.offset(1)-->
   <% @articles.each do |article| %>
   <div class="row mb-3">
-      <div class="col-md offset-md-1">
-<!---------after edit------------>
-         <!--article.images.each do |img| -->
-          
-         <!--end -->
-<!--------------------->
-        <img src="/assets/smart-home-3096224_640" class="img-thumbnail" width="400" />
-      </div>
-      <div class="col">
-        <ul class="">
-          <li>
-            <%= link_to article.title, article_path(article.id) %>
-          </li>
-          <li>
-        <%= article.user.name %>
-          </li>
-          <li>
-        <%= article.updated_at.strftime('%Y/%m/%d') %>
-          </li>
-          <li>
-        いいね <%= article.likes_count %>件
-          </li>
-          <li>
-        コメント <%= article.comments.size %>件
-          </li>
-        </ul>
-      </div>
+    <div class="col-md offset-md-1">
+      <% if article.article_images.first %>
+        <%= attachment_image_tag article.article_images.first, :image, class:"img-thumbnail", width:"200" %>
+      <% end %>
+    </div>
+    <div class="col">
+      <ul>
+        <li>
+          <%= link_to article.title, article_path(article.id) %>
+        </li>
+        <li>
+      <%= article.user.name %>
+        </li>
+        <li>
+      <%= article.updated_at.strftime('%Y/%m/%d') %>
+        </li>
+        <li>
+      いいね <%= article.likes_count %>件
+        </li>
+        <li>
+      コメント <%= article.comments.size %>件
+        </li>
+      </ul>
+    </div>
   </div>
   <% end %>
 </div>
