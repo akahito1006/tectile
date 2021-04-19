@@ -1,5 +1,5 @@
 class Admin::ArticlesController < ApplicationController
-  before_action :authenticate_admin
+  before_action :authenticate_admin!
   
   def index
     @articles = Article.all.eager_load(:user, :likes, :comments)
