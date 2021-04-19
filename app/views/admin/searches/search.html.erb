@@ -22,7 +22,7 @@
       </div>
       <div clas="col">
         <%= link_to "編集する", edit_admin_article_path(article.id), class:"btn btn-primary" %>
-        <%= link_to "削除する", admin_article_path(article.id), method: :delete, class:"btn btn-danger" %>
+        <%= link_to "削除する", admin_article_path(article.id), method: :delete, class:"btn btn-danger", data: { confirm: '本当に削除しますか？' } %>
       </div>
     </div>
   <% end %>
