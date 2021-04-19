@@ -18,17 +18,17 @@
   <div class="row mb-3 justify-content-around">
     <!--% @articles.each do |f| %>-->
     <% if @articles.present? %>
-      <% @articles.each do |f| %>
+      <% @articles.each do |article| %>
         <div class="col-3 shadow float">
-          <%= link_to article_path(f.id) do %>
-            <% f.article_images.first(1).each do |img| %>
-              <%= attachment_image_tag img, :image, class:"img-thumbnail", width:"200" %>
+          <%= link_to article_path(article.id) do %>
+            <% article.article_images.first(1).each do |img| %>
+              <%= attachment_image_tag img, :image, class:"img-thumbnail", width:"200", fallback: "smart-home_640" %>
             <% end %>
-            <h5><%= f.title %></h5>
+            <h5><%= article.title %></h5>
           <% end %>
-          <h5><%= f.user.name %></h5>
-          <h5><%= f.likes.size %></h5>
-          <h5><%= f.created_at.strftime('%Y/%m/%d') %></h5>
+          <h5><%= article.user.name %></h5>
+          <h5><%= article.likes.size %></h5>
+          <h5><%= article.created_at.strftime('%Y/%m/%d') %></h5>
         </div>
       <% end %>
     <% else %>

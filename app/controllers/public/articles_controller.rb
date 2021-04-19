@@ -1,4 +1,5 @@
 class Public::ArticlesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   
   def index
     @first_article = Article.first

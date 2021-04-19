@@ -31,6 +31,7 @@ end
     config.public_file_server.headers = {
       'Cache-Control' => 'public, max-age=172800'
     }
+    
   else
     config.action_controller.perform_caching = false
 
