@@ -10,7 +10,7 @@ class Public::CommentsController < ApplicationController
   end
   
   def destroy
-    @article = Article.find(params[:id])
+    @article = Article.find(params[:article_id])
     comment = current_user.comments.find_by(article_id: @article.id)
     comment.destroy
   end
