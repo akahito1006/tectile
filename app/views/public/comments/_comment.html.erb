@@ -1,0 +1,11 @@
+<% @article.comments.each do |comment| %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= comment.user.name %>
+      <%= comment.body %>
+      <% if comment.user == current_user %>
+        <%= link_to "削除", article_comment_path(comment.id), method: :delete, remote: true, class:"btn btn-danger", data: { confirm: '削除しますか？' } %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

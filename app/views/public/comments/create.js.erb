@@ -1,0 +1,2 @@
+$('#newcomment').html("<%= escape_javascript(render partial: 'public/comments/form', locals: {article: @article, comment: @comment}) %>");
+$('#comments').html("<%= escape_javascript(render partial: 'public/comments/comment', locals: {article: @article}) %>");

@@ -26,15 +26,12 @@
   
 <!--会員-->
   <% if user_signed_in? %>
-    <!--いいねボタン-->
+    <!--非同期いいねボタン create.js destroy.js -->
     <div class="row mb-3">
-      <div class="col-md-2">
-        <% if @article.liked_by(current_user) %>
-          <%= link_to "いいね♥#{@article.likes_count}", article_likes_path(@article), class:"btn btn-primary", method: :delete %>
-        <% else %>
-          <%= link_to "いいね♡#{@article.likes_count}", article_likes_path(@article), class:"btn btn-primary", method: :post %>
-        <% end %>
+      <div class="col-md-2" id="likes_btn_<%= @article.id %>">
+        <%= render partial: 'public/likes/like', locals: {article: @article} %>
       </div>
+
       <div class="col-md-2">
         <!--コメント入力窓の表示切り替え-->
         <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#newcomment" aria-controls="newcomment" aria-expanded="false" aria-label="Toggle newcomment">
@@ -42,25 +39,14 @@
         </button>
       </div>
     </div>
-    <!--コメント一覧-->
-    <% @article.comments.each do |comment| %>
-      <div class="row mb-3">
-        <div class="col">
-          <%= comment.user.name %>
-          <%= comment.body %>
-          <% if comment.user == current_user %>
-            <%= link_to "削除", article_comment_path(comment.id), method: :delete, class:"btn btn-danger", data: { confirm: '削除しますか？' } %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-    <!--コメント入力窓-->
+    <!--非同期コメント一覧 create.js destroy.js-->
+    <div id="comments">
+      <%= render partial: 'public/comments/comment', locals: {article: @article} %>
+    </div>
+    <!--非同期コメント入力窓 create.js, ボタンで表示、非表示-->
     <div class="row mb-3">
       <div class="col collapse" id="newcomment">
-        <%= form_with(model:[@article, @comment], local: true) do |f| %>
-          <%= f.text_area :body, class:"form-control", size:'40',placeholder: "コメントをここに" %>
-          <%= f.submit "投稿", class:"btn btn-outline-success" %>
-        <% end %>
+        <%= render partial: 'public/comments/form', locals: {article: @article, comment: @comment} %>
       </div>
     </div>
     

@@ -1,0 +1,1 @@
+$('#likes_btn_<%= @article.id %>').html("<%= escape_javascript(render partial: 'public/likes/like', locals: { article: @article }) %>");

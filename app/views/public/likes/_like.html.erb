@@ -1,0 +1,7 @@
+<% if article.liked_by(current_user) %>
+  <%= link_to "いいね♥#{article.likes.count}", article_likes_path(article), method: :delete, remote: true, class:"btn btn-primary" %>
+<% else %>
+  <%= link_to "いいね♡#{article.likes.count}", article_likes_path(article), method: :post, remote: true, class:"btn btn-primary" %>
+<% end %>
+
+<!--非同期のため、likes.count <= likesカウンターキャッシュ-->
