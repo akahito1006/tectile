@@ -24,7 +24,7 @@ class Public::SessionsController < Devise::SessionsController
       guest.name = "testuser1"
       guest.password = "testpw"
     end
-    
+
     sign_in user
     redirect_to root_path
   end

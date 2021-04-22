@@ -1,21 +1,20 @@
 Rails.application.routes.draw do
-  
   devise_for :admin, controllers: {
-    sessions:       'admin/sessions',
-    passwords:      'admin/passwords',
-    registrations:  'admin/registrations'
+    sessions: 'admin/sessions',
+    passwords: 'admin/passwords',
+    registrations: 'admin/registrations',
   }
   devise_for :users, controllers: {
-    sessions:       'public/sessions',
-    passwords:      'public/passwords',
-    registrations:  'public/registrations'
+    sessions: 'public/sessions',
+    passwords: 'public/passwords',
+    registrations: 'public/registrations',
   }
-  
-# 管理者ゲストログイン
+
+  # 管理者ゲストログイン
   devise_scope :admin do
     post '/admin/guest_session' => 'admin/sessions#guest_session'
   end
-# 会員ゲストログイン
+  # 会員ゲストログイン
   devise_scope :user do
     post '/users/guest_session' => 'public/sessions#guest_session'
   end
@@ -37,5 +36,4 @@ Rails.application.routes.draw do
     resources :articles,  only: [:index, :show, :edit, :update, :destroy]
     get '/search' => 'searches#search'
   end
-  
 end

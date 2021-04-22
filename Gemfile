@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.5'
 # Use sqlite3 as the database for Active Record
@@ -63,7 +62,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails'
-gem 'rubocop'
+gem 'rubocop-airbnb'
 gem 'pry-byebug'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
