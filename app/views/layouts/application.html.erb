@@ -89,7 +89,7 @@
           <!--管理者：検索窓-->
           <% if current_admin %>
             <div class="col collapse navbar-collapse" id="navbarsearch">
-              <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+              <%= form_with url: admin_search_path, method: :get, local: true, class:"form-inline" do |f| %>
                 <%= f.text_field :word_for_search, class:"form-control", size:'40',placeholder: "キーワードを入力" %>
                 <%= f.submit "Search", class:"btn btn-outline-success" %>
               <% end %>
@@ -97,7 +97,7 @@
           <!--会員/一般：検索窓-->
           <% else %>
             <div class="col collapse navbar-collapse" id="navbarsearch">
-              <%= form_with url: search_path, method: :get, local: true do |f| %>
+              <%= form_with url: search_path, method: :get, local: true, class:"form-inline" do |f| %>
                 <%= f.text_field :word_for_search, class:"form-control", size:'40',placeholder: "キーワードを入力" %>
                 <%= f.submit "Search", class:"btn btn-outline-success" %>
               <% end %>
@@ -108,6 +108,11 @@
     </header>
     
     <body>
+      <div class="container">
+        <div class="row">
+          <h4 class="col p-0 alert alert-warning p-0 border-0" role="alert"><%= flash[:notice] %></h4>
+        </div>
+      </div>
       <%= yield %>
     </body>
     

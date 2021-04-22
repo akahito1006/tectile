@@ -47,6 +47,7 @@ end
 
 group :production do
   gem 'mysql2'
+  gem 'rails-i18n'
 end
 
 group :test do
@@ -72,3 +73,4 @@ gem 'devise'
 gem 'kaminari'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'bxslider-rails'
+gem 'rails-i18n'

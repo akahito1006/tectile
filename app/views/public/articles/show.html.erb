@@ -9,15 +9,21 @@
       </div>
     <% end %>
   </div>
+  <!--スライドショー-->
   <div class="row mb-3">
     <div class="col-md-8 p-0 mx-auto text-center d-flex align-items-end">
       <div class="slideshow">
-        <% @article.article_images.each do |img| %>
-          <%= attachment_image_tag img, :image, class:"img-thumbnail", width:"200" %>
+        <% if @article.article_images.present? %>
+          <% @article.article_images.each do |img| %>
+            <%= attachment_image_tag img, :image %>
+          <% end %>
+        <% else %>
+          <%= image_tag "smart-home_640.jpg", width:"200" %>
         <% end %>
       </div>
     </div>
   </div>
+  <!--記事本文-->
   <div class="row mb-3">
     <div class="col-md-9 p-0 mx-auto">
       <%= simple_format(h(@article.content)) %>
@@ -27,25 +33,26 @@
 <!--会員-->
   <% if user_signed_in? %>
     <!--非同期いいねボタン create.js destroy.js -->
-    <div class="row mb-3">
-      <div class="col-md-2" id="likes_btn_<%= @article.id %>">
-        <%= render partial: 'public/likes/like', locals: {article: @article} %>
-      </div>
-
-      <div class="col-md-2">
+    <div class="row mb-3 ">
+      <div class="col-md-9 px-0 mx-auto">
+        <span id="likes_btn_<%= @article.id %>">
+          <%= render partial: 'public/likes/like', locals: {article: @article} %>
+        </span>
         <!--コメント入力窓の表示切り替え-->
-        <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#newcomment" aria-controls="newcomment" aria-expanded="false" aria-label="Toggle newcomment">
+        <button class="btn btn-success offset-md-1" type="button" data-toggle="collapse" data-target="#newcomment" aria-controls="newcomment" aria-expanded="false" aria-label="Toggle newcomment">
           コメントする
         </button>
       </div>
     </div>
     <!--非同期コメント一覧 create.js destroy.js-->
-    <div id="comments">
-      <%= render partial: 'public/comments/comment', locals: {article: @article} %>
+    <div class="row mb-3 ">
+      <div class="col-md-9 px-0 mx-auto" id="comments">
+        <%= render partial: 'public/comments/comment', locals: {article: @article} %>
+      </div>
     </div>
     <!--非同期コメント入力窓 create.js, ボタンで表示、非表示-->
     <div class="row mb-3">
-      <div class="col collapse" id="newcomment">
+      <div class="col-md-9 px-0 mx-auto collapse" id="newcomment">
         <%= render partial: 'public/comments/form', locals: {article: @article, comment: @comment} %>
       </div>
     </div>

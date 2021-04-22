@@ -1,5 +1,18 @@
 <div class="container">
   <div class="row mb-3">
+    <div class="col p-0 alert alert-warning p-0 border-0">
+      <% if @article.errors.any? %>
+        <%= @article.errors.size %>件のエラーが発生しました
+        <ul>
+          <% @article.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="row mb-3">
     <div class="col">
       <h4>新規作成</h4>
     </div>

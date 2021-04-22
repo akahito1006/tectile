@@ -1,11 +1,12 @@
-<% article.comments.each do |comment| %>
-  <div class="row mb-3">
-    <div class="col">
-      <%= comment.user.name %>
-      <%= comment.body %>
-      <% if comment.user == current_user %>
-        <%= link_to "削除", article_comment_path(article_id: comment.article_id, id: comment.id), method: :delete, remote: true, class:"btn btn-danger", data: { confirm: '削除しますか？' } %>
+<ul>
+  <% article.comments.each do |comment| %>
+    <li>
+      <%= comment.user.name %>：
+        <%= comment.body %>
+        (<%= comment.created_at.strftime('%Y/%m/%d') %>)
+        <% if comment.user == current_user %>
+          <%= link_to "削除", article_comment_path(article_id: comment.article_id, id: comment.id), method: :delete, remote: true, class:"btn btn-danger", data: { confirm: '削除しますか？' } %>
+        <% end %>
       <% end %>
-    </div>
-  </div>
-<% end %>
+    </li>
+</ul>

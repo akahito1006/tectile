@@ -14,7 +14,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to user_path(params[:id])
+    redirect_to user_path(params[:id]), notice: "会員情報を変更しました"
   end
   
   def unsubscribe
@@ -22,7 +22,7 @@ class Public::UsersController < ApplicationController
   
   def destroy
     @user = User.find(params[:id]).destroy
-    redirect_to root_path
+    redirect_to root_path, notice: "退会しました"
   end
   
 private

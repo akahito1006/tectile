@@ -2,7 +2,8 @@ class Admin::ArticlesController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @articles = Article.all.eager_load(:user, :likes, :comments)
+    @first_article = Article.first
+    @articles = Article.all.offset(1).eager_load(:user, :likes, :comments, :article_images)
   end
   
   def show

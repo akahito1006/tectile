@@ -16,19 +16,41 @@
     </div>
   </div>
   <div class="row mb-3 justify-content-around">
-    <!--% @articles.each do |f| %>-->
     <% if @articles.present? %>
       <% @articles.each do |article| %>
-        <div class="col-3 shadow float">
-          <%= link_to article_path(article.id) do %>
-            <% article.article_images.first(1).each do |img| %>
-              <%= attachment_image_tag img, :image, class:"img-thumbnail", width:"200", fallback: "smart-home_640" %>
+        <div class="col-3 shadow float text-center align-self-center">
+          <!--管理者用　記事詳細ページへのリンク-->
+          <% if current_admin %>
+            <%= link_to admin_article_path(article.id) do %>
+              <!--画像がある場合、代表として1枚目-->
+              <% if article.article_images.present? %>
+                <% article.article_images.first(1).each do |img| %>
+                  <%= attachment_image_tag img, :image, class:"img-thumbnail", width:"200" %>
+                <% end %>
+              <!--画像がない場合、代替画像-->
+              <% else %>
+                <%= image_tag "smart-home_640.jpg", width:"200" %>
+              <% end %>
+              <h5><%= article.title %></h5>
             <% end %>
-            <h5><%= article.title %></h5>
+          
+          <!--一般・会員用　記事詳細ページへのリンク-->
+          <% else %>
+            <%= link_to article_path(article.id) do %>
+              <% if article.article_images.present? %>
+                <% article.article_images.first(1).each do |img| %>
+                  <%= attachment_image_tag img, :image, class:"img-thumbnail", width:"200" %>
+                <% end %>
+              <% else %>
+                <%= image_tag "smart-home_640.jpg", width:"200" %>
+              <% end %>
+              <h5><%= article.title %></h5>
+            <% end %>
           <% end %>
-          <h5><%= article.user.name %></h5>
-          <h5><%= article.likes.size %></h5>
-          <h5><%= article.created_at.strftime('%Y/%m/%d') %></h5>
+
+          <h5>投稿者：<%= article.user.name %></h5>
+          <h5><%= article.likes.size %>いいね</h5>
+          <h5>更新日：<%= article.updated_at.strftime('%Y/%m/%d') %></h5>
         </div>
       <% end %>
     <% else %>

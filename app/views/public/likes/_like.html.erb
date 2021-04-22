@@ -1,4 +1,4 @@
-<% if article.liked_by(current_user) %>
+<% if article.liked_by(current_user, article) %>
   <%= link_to "いいね♥#{article.likes.count}", article_likes_path(article), method: :delete, remote: true, class:"btn btn-primary" %>
 <% else %>
   <%= link_to "いいね♡#{article.likes.count}", article_likes_path(article), method: :post, remote: true, class:"btn btn-primary" %>

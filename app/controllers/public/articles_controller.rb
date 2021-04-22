@@ -19,8 +19,11 @@ class Public::ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     @article.likes_count = 0
-    @article.save
-    redirect_to articles_path
+    if @article.save
+      redirect_to article_path(@article.id), notice: "新しい記事を投稿しました。"
+    else
+      render "new"
+    end
   end
   
   def edit
@@ -29,13 +32,19 @@ class Public::ArticlesController < ApplicationController
   
   def update
     @article = Article.find(params[:id])
-    @article.update(article_params)
-    redirect_to articles_path
+    if @article.update(article_params)
+      redirect_to article_path(@article.id), notice: "編集を適用しました"
+    else
+      render "edit"
+    end
   end
   
   def destroy
-    @article = Article.find(params[:id]).destroy
-    redirect_to articles_path
+    if @article = Article.find(params[:id]).destroy
+      redirect_to articles_path, notice: "記事を削除しました"
+    else
+      redirect_to article_path(@article.id)
+    end
   end
   
   private
