@@ -4,3 +4,5 @@
 #   http_host: 'example.org',
 #   https: false
 # )
+
+Refile.secret_key = ENV['REFILE_SECRET_KEY']
