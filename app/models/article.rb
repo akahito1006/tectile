@@ -5,7 +5,8 @@ class Article < ApplicationRecord
   has_many :article_images, dependent: :destroy
   accepts_attachments_for :article_images, attachment: :image
 
-  validates :title, presence: true
+  validates :user_id, presence: true
+  validates :title  , presence: true
   validates :content, presence: true
 
   def liked_by(user, article)

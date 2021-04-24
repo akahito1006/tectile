@@ -33,6 +33,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'bullet'
+  gem 'capybara'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -51,8 +53,6 @@ group :production do
 end
 
 group :test do
-  gem 'capybara'
-  gem 'rspec-rails'
   gem "factory_bot_rails"
   gem 'faker'
   gem 'database_cleaner'

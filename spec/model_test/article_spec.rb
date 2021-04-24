@@ -11,15 +11,15 @@ RSpec.describe Article, "Articleモデルに関するテスト", type: :model do
     end
     
     context "空白のバリデーションチェック" do
-      it "投稿ユーザーが空の時、保存できない" do
+      it "投稿ユーザー(user_id)が空の時、保存できない" do
         article = Article.new(user_id: "", title: Faker::Lorem.characters(number: 20), content: Faker::Lorem.characters(number: 300))
         expect(article).to be_invalid
       end
-      it "タイトルが空の時、保存できない" do
+      it "タイトル(title)が空の時、保存できない" do
         article = Article.new(user_id: 1, title: "", content: Faker::Lorem.characters(number: 300))
         expect(article).to be_invalid
       end
-      it "本文が空の時、保存できない" do
+      it "本文(content)が空の時、保存できない" do
         article = Article.new(user_id: 1, title: Faker::Lorem.characters(number: 20), content: "")
         expect(article).to be_invalid
       end
