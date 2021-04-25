@@ -27,11 +27,19 @@ class Public::ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
+    begin
+      @article = Article.find(params[:id])
+    rescue
+      redirect_to "/", notice: "エラーが発生しました"
+    end
   end
 
   def update
-    @article = Article.find(params[:id])
+    begin
+      @article = Article.find(params[:id])
+    rescue
+      redirect_to "/", notice: "エラーが発生しました"
+    end
     if @article.update(article_params)
       redirect_to article_path(@article.id), notice: "編集を適用しました"
     else
@@ -43,7 +51,7 @@ class Public::ArticlesController < ApplicationController
     if @article = Article.find(params[:id]).destroy
       redirect_to articles_path, notice: "記事を削除しました"
     else
-      redirect_to article_path(@article.id)
+      redirect_to "/", notice: "エラーが発生しました"
     end
   end
 

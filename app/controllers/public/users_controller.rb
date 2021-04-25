@@ -2,17 +2,29 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @user = User.where(id: current_user.id).eager_load(:articles, :likes)
+    begin
+      @user = User.where(id: current_user.id).eager_load(:articles, :likes)
+    rescue
+      redirect_to "/", notice: "エラーが発生しました"
+    end
     @articles = Article.where(user_id: current_user.id).eager_load(:images)
     # a user has_many articles, an article has_many images. *a user has no images*
   end
 
   def edit
-    @user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue
+      redirect_to "/", notice: "エラーが発生しました"
+    end
   end
 
   def update
-    @user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue
+      redirect_to "/", notice: "エラーが発生しました"
+    end
     if @user.update(user_params)
       redirect_to user_path(params[:id]), notice: "会員情報を変更しました"
     else
@@ -24,8 +36,11 @@ class Public::UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id]).destroy
-    redirect_to root_path, notice: "退会しました"
+    if @user = User.find(params[:id]).destroy
+      redirect_to root_path, notice: "退会しました"
+    else
+      redirect_to "/", notice: "エラーが発生しました"
+    end
   end
 
   private
