@@ -1,0 +1,25 @@
+  <% articles.each do |article| %>
+    <div class="row mb-3 justify-content-center align-items-center float">
+      <!--一般・会員用　記事詳細ページへのリンク-->
+      <div class="col-md-4">
+        <%= link_to article_path(article.id) do %>
+          <% if article.article_images.present? %>
+            <% article.article_images.first(1).each do |img| %>
+              <%= attachment_image_tag img, :image, class:"img-thumbnail", width:"300" %>
+            <% end %>
+          <% else %>
+            <%= image_tag "smart-home_640.jpg", width:"380" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-4 bg-light py-2">
+        <%= link_to article.title, article_path(article.id), class:"h4" %></li>
+        <ul class="mb-0">
+          <li>投稿ユーザー：<%= article.user.name %></li>
+          <li>更新日：<%= article.updated_at.strftime('%Y/%m/%d') %></li>
+          <li>いいね：<%= article.likes_count %>件</li>
+          <li>コメント：<%= article.comments.size %>件</li>
+        </ul>
+      </div>
+    </div>
+  <% end %>

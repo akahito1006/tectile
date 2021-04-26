@@ -7,7 +7,12 @@ class Public::UsersController < ApplicationController
     rescue
       redirect_to "/", notice: "エラーが発生しました"
     end
-    @articles = Article.where(user_id: current_user.id).eager_load(:images)
+    @articles = Article
+      .where(user_id: current_user.id)
+      .eager_load(:user, :likes, :comments, :article_images)
+      .page(params[:page])
+      .per(5)
+      .reverse_order
     # a user has_many articles, an article has_many images. *a user has no images*
   end
 

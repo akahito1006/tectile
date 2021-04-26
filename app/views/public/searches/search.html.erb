@@ -1,26 +1,11 @@
 <div class="container">
     <div class="row mb-3">
       <div class="col-md">
-        <h4>検索キーワード："<%= @word_for_search %>"（全<%= @articles.size %>件）</h4>
+        <h4>検索キーワード："<%= @word_for_search %>"（全<%= @articles.total_count %>件）</h4>
       </div>
     </div>
-  <% @articles.each do |article| %>
-    <div class="row mb-3 d-flex align-items-center">
-      <div class="col-md-2 offset-md-1">
-        <% if article.article_images.first %>
-          <%= attachment_image_tag article.article_images.first, :image, class:"img-thumbnail", width:"200" %>
-        <% end %>
-      </div>
-      <div class="col">
-        <%= link_to article.title, article_path(article.id) %>
-        <%= article.user.name %>
-        <%= article.updated_at.strftime('%Y/%m/%d') %>
-        いいね <%= article.likes_count %>件
-      </div>
-      <div clas="col">
-        <%= link_to "編集する", edit_article_path(article.id), class:"btn btn-primary" %>
-        <%= link_to "削除する", article_path(article.id), method: :delete, class:"btn btn-danger", data: { confirm: '本当に削除しますか？' } %>
-      </div>
-    </div>
-  <% end %>
+    
+    <!--記事リスト-->
+    <%= render partial: "/public/articles/list", locals: {articles: @articles} %>
+
 </div>

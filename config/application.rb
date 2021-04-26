@@ -8,8 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Tectile
   class Application < Rails::Application
-    # エラー文日本語化
+    # 日本語化
     config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     # バッチ処理（cron）
     config.paths.add 'lib', eager_load: true
     # Settings in config/environments/* take precedence over those specified here.

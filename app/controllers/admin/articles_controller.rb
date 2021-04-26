@@ -2,8 +2,13 @@ class Admin::ArticlesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @first_article = Article.first
-    @articles = Article.all.offset(1).eager_load(:user, :likes, :comments, :article_images)
+    @last_article = Article.last
+    @articles = Article
+      .all
+      .eager_load(:user, :likes, :comments, :article_images)
+      .page(params[:page])
+      .per(5)
+      .reverse_order
   end
 
   def show
@@ -11,18 +16,32 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
+    begin
+      @article = Article.find(params[:id])
+    rescue
+      redirect_to "/", notice: "エラーが発生しました"
+    end
   end
 
   def update
-    @article = Article.find(params[:id])
-    @article.update(article_params)
-    redirect_to article_path(params[:id])
+    begin
+      @article = Article.find(params[:id])
+    rescue
+      redirect_to "/", notice: "エラーが発生しました"
+    end
+    if @article.update(article_params)
+      redirect_to admin_article_path(@article.id), notice: "編集を適用しました"
+    else
+      render "edit"
+    end
   end
 
   def destroy
-    @article = Article.find(params[:id]).destroy
-    redirect_to articles_path
+    if @article = Article.find(params[:id]).destroy
+      redirect_to admin_articles_path, notice: "記事を削除しました"
+    else
+      redirect_to "/", notice: "エラーが発生しました"
+    end
   end
 
   private

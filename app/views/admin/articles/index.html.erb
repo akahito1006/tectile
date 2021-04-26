@@ -4,36 +4,32 @@
       <h4>記事リスト</h4>
     </div>
   </div>
-  
-  <% @articles.each do |article| %>
+<!--記事1件目のスライドショー skippr-->
   <div class="row mb-3">
-      <div class="col-md offset-md-1">
-<!---------after edit------------>
-         <!--article.images.each do |img| -->
-          
-         <!--end -->
-<!--------------------->
-        <img src="/assets/smart-home-3096224_640" class="img-thumbnail" width="400" />
+    <div class="col-8 p-0 mx-auto text-center">
+      <div class="slideshow">
+        <% if @last_article.article_images.present? %>
+          <% @last_article.article_images.each do |img| %>
+            <%= attachment_image_tag img, :image %>
+          <% end %>
+        <% else %>
+          <%= image_tag "smart-home_640.jpg", width:"200" %>
+        <% end %>
       </div>
-      <div class="col">
-        <ul class="">
-          <li>
-            <%= link_to article.title, admin_article_path(article.id) %>
-          </li>
-          <li>
-        <%= article.user.name %>
-          </li>
-          <li>
-        <%= article.updated_at %>
-          </li>
-          <li>
-        いいね <%= article.likes_count %>件
-          </li>
-          <li>
-        コメント <%= article.comments.size %>件
-          </li>
-        </ul>
+      <div class="main-visual-content text-light">
+        <h4>
+          <%= link_to @last_article.title, admin_article_path(@last_article.id) %>
+        </h4>
       </div>
+    </div>
   </div>
-  <% end %>
+
+<!--2件目以降, Article.all.offset(1)-->
+  <%= render partial:"list", locals: {articles: @articles} %>
+  
+  <div class="row mb-3">
+    <div class="col-2 mx-auto">
+      <%= paginate @articles %>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,38 @@
+<% articles.each do |article| %>
+  <div class="row mb-3 d-flex align-items-center">
+    <div class="col-md-2 offset-md-1">
+      <%= link_to admin_article_path(article.id) do %>
+        <% if article.article_images.first %>
+          <%= attachment_image_tag article.article_images.first, :image, class:"img-thumbnail", width:"200" %>
+        <% else %>
+          <%= image_tag "smart-home_640.jpg", width:"200" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col offset-md-1">
+          <%= link_to article.title, admin_article_path(article.id), class:"h4" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col offset-md-1">
+          <%= article.user.name %>
+          | <%= article.updated_at.strftime('%Y/%m/%d') %>
+          | いいね: <%= article.likes_count %>件
+          | コメント: <%= article.comments.size %>件
+        </div>
+      </div>
+    </div>
+    <div clas="col">
+      <%= link_to "編集する", edit_admin_article_path(article.id), class:"btn btn-primary" %>
+      <%= link_to "削除する", admin_article_path(article.id), method: :delete, class:"btn btn-danger", data: { confirm: '本当に削除しますか？' } %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row mb-3">
+  <div class="col-3 mx-auto">
+    <%= paginate articles %>
+  </div>
+</div>

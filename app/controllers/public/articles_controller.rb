@@ -2,8 +2,13 @@ class Public::ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @first_article = Article.first
-    @articles = Article.all.offset(1).eager_load(:user, :likes, :comments, :article_images)
+    @last_article = Article.last
+    @articles = Article
+      .all
+      .eager_load(:user, :likes, :comments, :article_images)
+      .page(params[:page])
+      .per(5)
+      .reverse_order
   end
 
   def show

@@ -1,8 +1,8 @@
 <div class="container">
-  <% @user.each do |f| %>
+  <% @user.each do |user| %>
     <div class="row mb-3">
       <div class="col-md-3">
-        <h4><%= f.name %>様</h4>
+        <h4><%= user.name %>様</h4>
       </div>
       <div class="col">
         <%= link_to "会員情報を編集する", edit_user_path, class:"btn btn-success" %>
@@ -12,67 +12,45 @@
     <div class="row mb-3">
     <!--投稿バッジ-->
       <div class="col">
-        <h5>投稿数：<%= f.articles.size %>件</h5>
+        <h5>投稿数：<%= user.articles.size %>件</h5>
         <div class="col text-light bg-dark">
-          <% f.articles.size.times do |b| %>
+          <% user.articles.size.times do |n| %>
             <i class="h4 mt-1 fas fa-medal"></i>
           <% end %>
-          <h5>投稿バッジ <%= f.articles.size %>個獲得！</h5>
+          <h5>投稿バッジ <%= user.articles.size %>個獲得！</h5>
         </div>
       </div>
       
     <!--いいねバッジ-->
       <div class="col">
-        <h5>獲得いいね数：<%= f.articles.sum(:likes_count) %>件</h5>
+        <h5>獲得いいね数：<%= user.articles.sum(:likes_count) %>件</h5>
         <div class="col text-light bg-dark">
-          <% f.articles.sum(:likes_count).times do |b| %>
+          <% user.articles.sum(:likes_count).times do |n| %>
             <i class="h4 mt-1 fas fa-medal"></i>
           <% end %>
-          <h5>いいねバッジ <%= f.articles.sum(:likes_count) %>個獲得！</h5>
+          <h5>いいねバッジ <%= user.articles.sum(:likes_count) %>個獲得！</h5>
         </div>
       </div>
   
     <!--いいね貢献バッジ-->
       <div class="col">
-        <h5>いいねした数：<%= f.likes.size %>件</h5>
+        <h5>いいねした数：<%= user.likes.size %>件</h5>
         <div class="col text-light bg-dark rounded">
-          <% f.likes.size.times do |b| %>
+          <% user.likes.size.times do |n| %>
             <i class="h4 mt-1 fas fa-medal"></i>
           <% end %>
-          <h5>いいね貢献バッジ <%= f.likes.size %>個獲得！</h5>
+          <h5>いいね貢献バッジ <%= user.likes.size %>個獲得！</h5>
         </div>
       </div>
     </div>
   
-  <div class="row mb-3">
-    <div class="col">
-      <h4>投稿記事の管理</h4>
-    </div>
-  </div>
-  
-  <!--@user.each do |f| *above this-->
-  <% f.articles.each do |article| %>
-    <div class="row mb-3 d-flex align-items-center">
-      <div class="col-md-2 offset-md-1">
-        <%= link_to article_path(article.id) do %>
-          <% article.article_images.first(1).each do |img| %>
-            <%= attachment_image_tag img, :image, class:"img-thumbnail", width:"200" %>
-          <% end %>
-        <% end %>
-      </div>
+    <div class="row mb-3">
       <div class="col">
-        <%= link_to article_path(article.id) do %>
-          <%= article.title %>
-        <% end %>
-        <%= f.name %>
-        <%= f.updated_at.strftime('%Y/%m/%d') %>
-        いいね <%= article.likes_count %>件
-      </div>
-      <div clas="col">
-        <%= link_to "編集する", edit_article_path(article.id), class:"btn btn-primary" %>
-        <%= link_to "削除する", article_path(article.id), method: :delete, class:"btn btn-danger", data: { confirm: '本当に削除しますか？' } %>
+        <h4>投稿記事の管理</h4>
       </div>
     </div>
   <% end %>
+  <!--記事リスト-->
+  <%= render partial: "/public/articles/list", locals: {articles: @articles} %>
+  
 </div>
-  <% end %>
