@@ -19,9 +19,9 @@ Admin.create!(
   password:   "administrator"
 )
 
-11.times do |n|
+10.times do |n|
   Article.create!(
-    user_id:  "#{n}",
+    user_id:  1,
     title:    "#{n + 1}件目の投稿記事のタイトル",
     content:
       "Lorem ipsum dolor sit amet,\r\n
@@ -37,15 +37,11 @@ end
 10.times do |n|
   Like.create!(
     user_id:      1,
-    article_id:   "#{n+1}"
+    article_id:   1
   )
   Like.create!(
     user_id:      2,
-    article_id:   "#{n+1}"
-  )
-  Like.create!(
-    user_id:      3,
-    article_id:   "#{n+1}"
+    article_id:   1
   )
 end
 
@@ -54,15 +50,5 @@ end
     user_id:      n+2,
     article_id:   n+1,
     body: "私も同感です。Lorem ipsum dolor sit amet"
-  )
-  Comment.create!(
-    user_id:      2,
-    article_id:   "#{n+1}",
-    body: "興味があります。Lorem ipsum dolor sit amet"
-  )
-  Comment.create!(
-    user_id:      3,
-    article_id:   "#{n+1}",
-    body: "私も知っています。Lorem ipsum dolor sit amet"
   )
 end
