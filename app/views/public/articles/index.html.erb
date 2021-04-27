@@ -9,7 +9,7 @@
     <!--記事1件目のスライドショー skippr-->
     <div class="row mb-3">
       <div class="col-8 p-0 mx-auto text-center">
-        <div class="slideshow">
+        <div class="slideshow shadow">
           <% if @last_article.article_images.present? %>
             <% @last_article.article_images.each do |img| %>
               <%= attachment_image_tag img, :image %>

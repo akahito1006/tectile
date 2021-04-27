@@ -1,7 +1,10 @@
-<% if article.liked_by(current_user, article) %>
-  <%= link_to "いいね♥#{article.likes.count}", article_likes_path(article), method: :delete, remote: true, class:"btn btn-primary" %>
+<% if article.user == current_user %>
+  <span class="btn btn-primary">いいね♥<%= @article.likes.count %></span>
 <% else %>
-  <%= link_to "いいね♡#{article.likes.count}", article_likes_path(article), method: :post, remote: true, class:"btn btn-primary" %>
+  <% if article.liked_by(current_user, article) %>
+    <%= link_to "いいね♥#{article.likes.count}", article_likes_path(article), method: :delete, remote: true, class:"btn btn-primary" %>
+  <% else %>
+    <%= link_to "いいね♡#{article.likes.count}", article_likes_path(article), method: :post, remote: true, class:"btn btn-primary" %>
+  <% end %>
+  <!--非同期、likes.count <= likesカウンターキャッシュ-->
 <% end %>
-
-<!--非同期のため、likes.count <= likesカウンターキャッシュ-->
