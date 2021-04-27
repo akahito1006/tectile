@@ -68,7 +68,7 @@
     <!--コメント一覧-->
     <% @article.comments.each do |comment| %>
       <div class="row mb-3">
-        <div class="col">
+        <div class="col-md-9 px-0 mx-auto">
           <%= comment.user.name %>
           <%= comment.body %>
         </div>

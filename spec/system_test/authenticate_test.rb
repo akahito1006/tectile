@@ -24,6 +24,7 @@ describe "[0]ログイン前のテスト"  do
   
   context "記事リスト画面" do
     before do
+      FactoryBot.create(:user)
       FactoryBot.create(:article)
       FactoryBot.create(:article_image)
     end
@@ -238,7 +239,6 @@ describe "[2]管理者ログイン後のテスト"  do
   
   context "記事リスト画面" do
     before do
-      FactoryBot.create(:article)
       FactoryBot.create(:article_image)
     end
     it "URLが正しい" do

@@ -3,34 +3,43 @@
     <div class="col">
       <h4><%= @article.title %></h4>
     </div>
-    <div class="col-2 ml-auto">
-      <%= link_to "編集する", edit_admin_article_path(@article.id), class:"btn btn-primary py-0" %>
-    </div>
+      <div class="col-2 ml-auto">
+        <%= link_to "編集する", edit_admin_article_path(@article.id), class:"btn btn-primary py-0" %>
+      </div>
   </div>
+  <!--スライドショー-->
   <div class="row mb-3">
-    <div class="col-md-8 p-0 mx-auto main-visual text-center d-flex align-items-end">
-        <div class="main-visual-content text-light">
-
-        </div>
+    <div class="col-md-8 p-0 mx-auto text-center d-flex align-items-end">
+      <div class="slideshow">
+        <% if @article.article_images.present? %>
+          <% @article.article_images.each do |img| %>
+            <%= attachment_image_tag img, :image %>
+          <% end %>
+        <% else %>
+          <%= image_tag "smart-home_640.jpg", width:"200" %>
+        <% end %>
+      </div>
     </div>
   </div>
+  <!--記事本文-->
   <div class="row mb-3">
     <div class="col-md-9 p-0 mx-auto">
       <%= simple_format(h(@article.content)) %>
     </div>
   </div>
-  <div class="row mb-3">
-    <div class="col">
-      
+  <!--いいね -->
+  <div class="row mb-3 ">
+    <div class="col-md-9 px-0 mx-auto">
+      <span class="btn btn-primary">いいね♥<%= @article.likes.count %></span>
     </div>
   </div>
-  
-  <div class="row mb-3">
-    <div class="col">
+  <!--コメント一覧-->
+  <% @article.comments.each do |comment| %>
+    <div class="row mb-3">
+      <div class="col-md-9 px-0 mx-auto">
+        <%= comment.user.name %>
+        <%= comment.body %>
+      </div>
     </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col">
-    </div>
-  </div>
+  <% end %>
 </div>

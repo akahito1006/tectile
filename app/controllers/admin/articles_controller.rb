@@ -7,7 +7,7 @@ class Admin::ArticlesController < ApplicationController
       .all
       .eager_load(:user, :likes, :comments, :article_images)
       .page(params[:page])
-      .per(5)
+      .per(10)
       .reverse_order
   end
 

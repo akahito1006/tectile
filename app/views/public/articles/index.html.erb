@@ -4,32 +4,44 @@
       <h4>記事リスト</h4>
     </div>
   </div>
-<!--記事1件目のスライドショー skippr-->
-  <div class="row mb-3">
-    <div class="col-8 p-0 mx-auto text-center">
-      <div class="slideshow">
-        <% if @last_article.article_images.present? %>
-          <% @last_article.article_images.each do |img| %>
-            <%= attachment_image_tag img, :image %>
-          <% end %>
-        <% else %>
-          <%= image_tag "smart-home_640.jpg", width:"200" %>
-        <% end %>
-      </div>
-      <div class="main-visual-content text-light">
-        <h4>
-          <%= link_to @last_article.title, article_path(@last_article.id) %>
-        </h4>
-      </div>
-    </div>
-  </div>
 
-<!--2件目以降, Article.all.offset(1)-->
-  <%= render partial:"items", locals: {articles: @articles} %>
+  <% if @last_article.present? %>
+    <!--記事1件目のスライドショー skippr-->
+    <div class="row mb-3">
+      <div class="col-8 p-0 mx-auto text-center">
+        <div class="slideshow">
+          <% if @last_article.article_images.present? %>
+            <% @last_article.article_images.each do |img| %>
+              <%= attachment_image_tag img, :image %>
+            <% end %>
+          <% else %>
+            <%= image_tag "smart-home_640.jpg", width:"200" %>
+          <% end %>
+        </div>
+        <div class="main-visual-content text-light">
+          <h4>
+            <%= link_to @last_article.title, article_path(@last_article.id) %>
+          </h4>
+        </div>
+      </div>
+    </div>
   
+    <!--2件目以降, Article.all.offset(1)-->
+    <%= render partial:"items", locals: {articles: @articles} %>
+    
+    <div class="row mb-3">
+      <div class="col-2 mx-auto">
+        <%= paginate @articles %>
+      </div>
+    </div>
+    
+  <% else %>
   <div class="row mb-3">
-    <div class="col-2 mx-auto">
-      <%= paginate @articles %>
+    <div class="col">
+      <h5>投稿はありません</h5>
     </div>
   </div>
+  
+  <% end %>
+  
 </div>
