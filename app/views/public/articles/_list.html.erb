@@ -9,7 +9,7 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col">
+    <div class="col-md-6">
       <div class="row">
         <div class="col offset-md-1">
           <%= link_to article.title, article_path(article.id), class:"h4" %>
@@ -25,8 +25,10 @@
       </div>
     </div>
     <div clas="col">
-      <%= link_to "編集する", edit_article_path(article.id), class:"btn btn-primary" %>
-      <%= link_to "削除する", article_path(article.id), method: :delete, class:"btn btn-danger", data: { confirm: '本当に削除しますか？' } %>
+      <% if article.user == current_user %>
+        <%= link_to "編集する", edit_article_path(article.id), class:"btn btn-primary" %>
+        <%= link_to "削除する", article_path(article.id), method: :delete, class:"btn btn-danger", data: { confirm: '本当に削除しますか？' } %>
+      <% end %>
     </div>
   </div>
 <% end %>
