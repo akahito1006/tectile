@@ -84,14 +84,19 @@ Article.create!(
   likes_count: 0
 )
 
-10.times do |n|
   Like.create!(
     user_id:      1,
-    article_id:   1
+    article_id:   10
   )
   Like.create!(
     user_id:      2,
-    article_id:   1
+    article_id:   10
+  )
+  
+10.times do |n|
+  Like.create!(
+    user_id:      3,
+    article_id:   10
   )
 end
 
