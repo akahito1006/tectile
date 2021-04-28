@@ -45,12 +45,13 @@ https://docs.google.com/spreadsheets/d/1zSDGbUzSOtsGtBGTIiOapxYs9OwAo4j-moNkQIoV
 
 ## 開発環境
 - OS：Amazon Linux 2
-- 言語：HTML,CSS,JavaScript,Ruby,SQL,yml
+- 言語：HTML,SCSS,JScript,Ruby,SQL,yml
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
 ## 使用素材
 画像使用元URL一覧
- - サイト名 (URL...)
- - ...
+ - ぱくたそ (https://www.pakutaso.com/)
+ - Freepik (https://www.freepik.com/)
+ - Pixabay (https://pixabay.com/ja/)

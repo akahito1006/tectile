@@ -46,7 +46,7 @@ Article.create!(
     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n
     ◇画像借用元\r\n
     'Technology photo created by rawpixel.com - www.freepik.com' (https://www.freepik.com/photos/technology)\r\n
-    'Gerd AltmannによるPixabayからの画像'",
+    'Gerd AltmannによるPixabayからの画像'(https://pixabay.com/ja/)",
   likes_count: 0
 )
 
