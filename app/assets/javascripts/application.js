@@ -22,12 +22,12 @@ $(document).ready(function () {
     transition          : 'fade',
     speed               : 1000,
     easing              : 'easeOutQuart',
-    navType             : 'block',
+    navType             : 'bubble',
     childrenElementType : 'img',
     arrows              : true,
     autoPlay            : true,
     autoPlayDuration    : 3000,
     keyboardOnAlways    : false,
-    hidePrevious        : true
+    hidePrevious        : false
   });
 });
