@@ -32,13 +32,13 @@
 - （読み手）ガジェットのレビューや興味のある情報を探して楽しむ時
 
 ## 設計書
-- ER図 https://drive.google.com/file/d/1Lb3AdM18SshZO8zSxAaUlAxvGlnQMwxt/view?usp=sharing
-- テーブル定義書 https://docs.google.com/spreadsheets/d/10NYpav3j5D8E8zzRZNeLcWdJDtQHPfSWiGCEfyUaHsU/edit?usp=sharing
+- ER図: https://drive.google.com/file/d/1Lb3AdM18SshZO8zSxAaUlAxvGlnQMwxt/view?usp=sharing
+- テーブル定義書: https://docs.google.com/spreadsheets/d/10NYpav3j5D8E8zzRZNeLcWdJDtQHPfSWiGCEfyUaHsU/edit?usp=sharing
 - 画面設計（ワイヤーフレーム）
- 1. 管理者側　https://drive.google.com/file/d/1SZ4PfqTUqfBUmGMpMkR-SwckRSkzkH1S/view?usp=sharing<br>
- 2. 会員側　https://drive.google.com/file/d/1fM3_tKHoF-INVKeQaoIGbXekHjoXOZ_G/view?usp=sharing
-- アプリケーション詳細設計 https://docs.google.com/spreadsheets/d/19FAAFXfSpFlIc2wFMzX6J0nYmgotr6WiH1b6fM6zyMA/edit?usp=sharing
-- WBS https://docs.google.com/spreadsheets/d/1VOBUCI_itIrvp7tgG54wSuOHaYPaSFiOpDmuQWH96sE/edit#gid=1773513600
+ 1. 管理者側:　https://drive.google.com/file/d/1SZ4PfqTUqfBUmGMpMkR-SwckRSkzkH1S/view?usp=sharing<br>
+ 2. 会員側:　https://drive.google.com/file/d/1fM3_tKHoF-INVKeQaoIGbXekHjoXOZ_G/view?usp=sharing
+- アプリケーション詳細設計: https://docs.google.com/spreadsheets/d/19FAAFXfSpFlIc2wFMzX6J0nYmgotr6WiH1b6fM6zyMA/edit?usp=sharing
+- WBS: https://docs.google.com/spreadsheets/d/1VOBUCI_itIrvp7tgG54wSuOHaYPaSFiOpDmuQWH96sE/edit#gid=1773513600
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1zSDGbUzSOtsGtBGTIiOapxYs9OwAo4j-moNkQIoVsLo/edit?usp=sharing
