@@ -6,7 +6,7 @@
         <h5>キーワード："<%= @word_for_search %>"（全<%= @articles.size %>件）</h5>
       </div>
     </div>
-    <!--記事リスト-->
+    <!--articles list-->
     <%= render partial: "/admin/articles/list", locals: {articles: @articles} %>
     
   <% else %>
@@ -16,7 +16,7 @@
         <h5>キーワード："<%= @word_for_search %>"（全<%= @users.size %>件）</h5>
       </div>
     </div>
-    <!--会員リスト-->
+    <!--members list-->
     <%= render partial: "/admin/users/list", locals: {users: @users} %>
   <% end %>
 </div>
