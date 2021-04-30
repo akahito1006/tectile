@@ -1,6 +1,6 @@
   <% articles.each do |article| %>
     <div class="row mb-3 justify-content-center align-items-center float">
-      <!--一般・会員用　記事詳細ページへのリンク-->
+      <!--member/non-member　link to articles/show-->
       <div class="col-md-4">
         <%= link_to article_path(article.id) do %>
           <% if article.article_images.present? %>
