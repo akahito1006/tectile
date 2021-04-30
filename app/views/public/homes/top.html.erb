@@ -19,22 +19,22 @@
     <% if @articles.present? %>
       <% @articles.each do |article| %>
         <div class="col-3 shadow float text-center align-self-center">
-          <!--管理者用　記事詳細ページへのリンク-->
+          <!--admin link_to admin/articles/show-->
           <% if current_admin %>
             <%= link_to admin_article_path(article.id) do %>
-              <!--画像がある場合、代表として1枚目-->
+              <!--first image on the array-->
               <% if article.article_images.present? %>
                 <% article.article_images.first(1).each do |img| %>
                   <%= attachment_image_tag img, :image, class:"img-thumbnail", width:"200" %>
                 <% end %>
-              <!--画像がない場合、代替画像-->
+              <!--alt image when the array is empty-->
               <% else %>
                 <%= image_tag "smart-home_640.jpg", width:"200" %>
               <% end %>
               <h5><%= article.title %></h5>
             <% end %>
           
-          <!--一般・会員用　記事詳細ページへのリンク-->
+          <!--members/non-members link_to public/articles-->
           <% else %>
             <%= link_to article_path(article.id) do %>
               <% if article.article_images.present? %>
