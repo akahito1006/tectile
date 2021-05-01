@@ -45,7 +45,7 @@ https://docs.google.com/spreadsheets/d/1zSDGbUzSOtsGtBGTIiOapxYs9OwAo4j-moNkQIoV
 
 ## 開発環境
 - OS：Amazon Linux 2
-- 言語：HTML,SCSS,JScript,Ruby,SQL,yml
+- 言語：HTML,SCSS,JS,Ruby,SQL,yml
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
