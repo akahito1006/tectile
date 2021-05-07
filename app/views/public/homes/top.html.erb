@@ -19,7 +19,7 @@
     <% if @articles.present? %>
       <% @articles.each do |article| %>
         <div class="col-3 shadow float text-center align-self-center">
-          <!--〇管理者用　記事詳細ページへのリンク-->
+          <!--管理者用　記事詳細ページへのリンク-->
           <% if current_admin %>
             <%= link_to admin_article_path(article.id) do %>
               <!--画像がある場合、代表として1枚目-->
