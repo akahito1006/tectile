@@ -6,7 +6,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @user = User.where(id: params[:id]).eager_load(:articles, :likes)
+    begin
+      @user = User.where(id: params[:id]).eager_load(:articles, :likes)
+    rescue
+      redirect_to "/", notice: "エラー：存在しないユーザーです。"
+    end
     @articles = Article
       .where(user_id: params[:id])
       .eager_load(:user, :likes, :comments, :article_images)

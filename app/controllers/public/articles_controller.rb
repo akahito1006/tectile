@@ -12,7 +12,11 @@ class Public::ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    begin
+      @article = Article.find(params[:id])
+    rescue
+      redirect_to "/", notice: "エラー：存在しない記事です。"
+    end
     @comment = Comment.new
   end
 
