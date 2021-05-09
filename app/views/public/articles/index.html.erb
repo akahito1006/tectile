@@ -6,7 +6,7 @@
   </div>
 
   <% if @last_article.present? %>
-    <!--記事1件目のスライドショー skippr-->
+    <!--slideshow of latest article's images; skippr-->
     <div class="row mb-3">
       <div class="col-8 p-0 mx-auto text-center">
         <div class="slideshow shadow">
@@ -26,7 +26,7 @@
       </div>
     </div>
   
-    <!--2件目以降, Article.all.offset(1)-->
+    <!--Article.all.offset(1)-->
     <%= render partial:"items", locals: {articles: @articles} %>
     
     <div class="row mb-3">

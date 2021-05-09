@@ -21,7 +21,7 @@
                 <% elsif current_admin %>
                   <i class="h4 fas fa-key"></i>管理者としてログインしています！
                 <% else %>
-                  <!--表示なし-->
+                  <!--no text for non-member-->
                 <% end %>
               </h6>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcontent" aria-controls="navbarcontent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +30,7 @@
               
               <div class="collapse navbar-collapse" id="navbarcontent">
                 <ul class="navbar-nav ml-auto">
-                  <!--会員メニュー-->
+                  <!--member-->
                   <% if current_user %>
                     <li class="nav-item">
                       <%= link_to "マイページ", user_path(current_user.id), class:"nav-link" %>
@@ -48,7 +48,7 @@
                       <%= link_to "ログアウト", destroy_user_session_path, class:"nav-link", method: :delete %>
                     </li>
                     
-                  <!--管理者メニュー-->
+                  <!--admin-->
                   <% elsif current_admin %>
                     <li class="nav-item">
                       <%= link_to "会員リスト", admin_users_path, class:"nav-link" %>
@@ -63,7 +63,7 @@
                       <%= link_to "ログアウト", destroy_admin_session_path, class:"nav-link", method: :delete %>
                     </li>
                     
-                  <!--一般メニュー-->
+                  <!--non-member-->
                   <% else %>
                     <li class="nav-item">
                       <%= link_to "About", about_path, class:"nav-link" %>
@@ -86,7 +86,7 @@
             </nav>
           </div>
           
-          <!--管理者：検索窓（会員検索、記事検索）-->
+          <!--admin：search（users, articles）-->
           <% if current_admin %>
             <div class="col collapse navbar-collapse" id="navbarsearch">
               <%= form_with url: admin_search_path, method: :get, local: true, class:"form-inline" do |f| %>
@@ -95,7 +95,7 @@
                 <%= f.submit "Search", class:"btn btn-outline-success" %>
               <% end %>
             </div>
-          <!--会員/一般：検索窓-->
+          <!--member/non-member：search-->
           <% else %>
             <div class="col collapse navbar-collapse" id="navbarsearch">
               <%= form_with url: search_path, method: :get, local: true, class:"form-inline" do |f| %>

@@ -6,5 +6,5 @@
   <% else %>
     <%= link_to "いいね♡#{article.likes.count}", article_likes_path(article), method: :post, remote: true, class:"btn btn-primary" %>
   <% end %>
-  <!--非同期、likes.count <= likesカウンターキャッシュ-->
+  <!--Ajax, likes.count <= likes_count(counter_cache on articles table)-->
 <% end %>

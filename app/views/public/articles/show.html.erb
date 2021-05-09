@@ -9,7 +9,7 @@
       </div>
     <% end %>
   </div>
-  <!--スライドショー-->
+  <!--slideshow; skippr-->
   <div class="row mb-3">
     <div class="col-md-8 p-0 mx-auto text-center d-flex align-items-end">
       <div class="slideshow">
@@ -23,49 +23,49 @@
       </div>
     </div>
   </div>
-  <!--記事本文-->
+  <!--article text content-->
   <div class="row mb-3">
     <div class="col-md-9 p-0 mx-auto">
       <%= simple_format(h(@article.content)) %>
     </div>
   </div>
   
-<!--会員-->
+<!--members-->
   <% if user_signed_in? %>
-    <!--非同期いいねボタン create.js destroy.js -->
+    <!--Ajax Like button; create.js destroy.js -->
     <div class="row mb-3 ">
       <div class="col-md-9 px-0 mx-auto">
         <span id="likes_btn_<%= @article.id %>">
           <%= render partial: 'public/likes/like', locals: {article: @article} %>
         </span>
-        <!--コメント入力窓の表示切り替え-->
+        <!--interract button for comment area-->
         <button class="btn btn-success offset-md-1" type="button" data-toggle="collapse" data-target="#newcomment" aria-controls="newcomment" aria-expanded="false" aria-label="Toggle newcomment">
           コメントする
         </button>
       </div>
     </div>
-    <!--非同期コメント一覧 create.js destroy.js-->
+    <!--Ajax Comment list; create.js destroy.js-->
     <div class="row mb-3 ">
       <div class="col-md-9 px-0 mx-auto" id="comments">
         <%= render partial: 'public/comments/comment', locals: {article: @article} %>
       </div>
     </div>
-    <!--非同期コメント入力窓 create.js, ボタンで表示、非表示-->
+    <!--Ajax cllapsible comment area; create.js-->
     <div class="row mb-3">
       <div class="col-md-9 px-0 mx-auto collapse" id="newcomment">
         <%= render partial: 'public/comments/form', locals: {article: @article, comment: @comment} %>
       </div>
     </div>
     
-<!--一般閲覧者-->
+<!--non-members-->
   <% else %>
-    <!--いいねボタン -> ログイン画面へ遷移-->
+    <!--HTML Like button; -> redirect_to /users/sign_in-->
     <div class="row mb-3">
       <div class="col-md-2">
         <%= link_to "いいね♡#{@article.likes_count}", article_likes_path(@article), class:"btn btn-primary", method: :post %>
       </div>
     </div>
-    <!--コメント一覧-->
+    <!--HTML Comment list-->
     <% @article.comments.each do |comment| %>
       <div class="row mb-3">
         <div class="col-md-9 px-0 mx-auto">

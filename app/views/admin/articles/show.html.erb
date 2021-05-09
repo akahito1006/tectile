@@ -7,7 +7,7 @@
         <%= link_to "編集する", edit_admin_article_path(@article.id), class:"btn btn-primary py-0" %>
       </div>
   </div>
-  <!--スライドショー-->
+  <!--slideshow skippr-->
   <div class="row mb-3">
     <div class="col-md-8 p-0 mx-auto text-center d-flex align-items-end">
       <div class="slideshow">
@@ -21,19 +21,19 @@
       </div>
     </div>
   </div>
-  <!--記事本文-->
+  <!--article text content-->
   <div class="row mb-3">
     <div class="col-md-9 p-0 mx-auto">
       <%= simple_format(h(@article.content)) %>
     </div>
   </div>
-  <!--いいね -->
+  <!--Likes-->
   <div class="row mb-3 ">
     <div class="col-md-9 px-0 mx-auto">
       <span class="btn btn-primary">いいね♥<%= @article.likes.count %></span>
     </div>
   </div>
-  <!--コメント一覧-->
+  <!--Comment list-->
   <% @article.comments.each do |comment| %>
     <div class="row mb-3">
       <div class="col-md-9 px-0 mx-auto">

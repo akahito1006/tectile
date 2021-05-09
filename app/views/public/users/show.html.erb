@@ -10,7 +10,7 @@
     </div>
     
     <div class="row mb-3">
-    <!--投稿バッジ-->
+    <!--top left area shows the number of articles "投稿バッジ"-->
       <div class="col">
         <h5>投稿数：<%= user.articles.size %>件</h5>
         <div class="col text-light bg-dark">
@@ -21,7 +21,7 @@
         </div>
       </div>
       
-    <!--いいねバッジ-->
+    <!--top middle area total amount of Likes from other members "いいねバッジ"-->
       <div class="col">
         <h5>獲得いいね数：<%= user.articles.sum(:likes_count) %>件</h5>
         <div class="col text-light bg-dark">
@@ -32,7 +32,7 @@
         </div>
       </div>
   
-    <!--いいね貢献バッジ-->
+    <!--top right area Likes for other members -->
       <div class="col">
         <h5>いいねした数：<%= user.likes.size %>件</h5>
         <div class="col text-light bg-dark rounded">
@@ -50,7 +50,7 @@
       </div>
     </div>
   <% end %>
-  <!--記事リスト-->
+  <!--article list "記事リスト"-->
   <%= render partial: "/public/articles/list", locals: {articles: @articles} %>
   
 </div>
