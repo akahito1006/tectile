@@ -1,7 +1,13 @@
 # サイト名："TecTile"
 
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/akahito1006/tectile.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/akahito1006/tectile/context:javascript)
-
+<p align="left">
+ <a href="https://codeclimate.com/github/akahito1006/tectile/maintainability">
+  <img src="https://api.codeclimate.com/v1/badges/d633ea46ac8e49db1eb3/maintainability" />
+ </a>
+ <a href="https://lgtm.com/projects/g/akahito1006/tectile/context:javascript">
+  <img src="https://img.shields.io/lgtm/grade/javascript/g/akahito1006/tectile.svg?logo=lgtm&logoWidth=18" />
+ </a>
+</p
 
 ## サイト概要
 お役立ちガジェット、デジタル技術など趣味のIoTを楽しむための情報投稿サイトです。<br>
