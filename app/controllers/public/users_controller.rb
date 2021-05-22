@@ -42,7 +42,7 @@ class Public::UsersController < ApplicationController
 
   def destroy
     if @user = User.find(params[:id]).destroy
-      redirect_to root_path, notice: "退会しました"
+      redirect_to "/", notice: "退会しました"
     else
       redirect_to "/", notice: "エラーが発生しました"
     end

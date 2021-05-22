@@ -4,9 +4,6 @@
  <a href="https://codeclimate.com/github/akahito1006/tectile/maintainability">
   <img src="https://api.codeclimate.com/v1/badges/d633ea46ac8e49db1eb3/maintainability" />
  </a>
- <a href="https://lgtm.com/projects/g/akahito1006/tectile/context:javascript">
-  <img src="https://img.shields.io/lgtm/grade/javascript/g/akahito1006/tectile.svg?logo=lgtm&logoWidth=18" />
- </a>
  <a href="https://www.codacy.com/gh/akahito1006/tectile/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=akahito1006/tectile&amp;utm_campaign=Badge_Grade">
   <img src="https://app.codacy.com/project/badge/Grade/b4ba413dde5e47dba0444afccb38f7be"/>
  </a>
