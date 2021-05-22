@@ -1,5 +1,8 @@
 # サイト名："TecTile"
 
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/akahito1006/tectile.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/akahito1006/tectile/context:javascript)
+
+
 ## サイト概要
 お役立ちガジェット、デジタル技術など趣味のIoTを楽しむための情報投稿サイトです。<br>
  Technology（テクノロジー）<br>
