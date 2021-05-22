@@ -31,15 +31,15 @@ a {
 .logo {
   width: 170px;
   height: 55px;
-  
+
   &:hover {
     opacity: 0.7;
-    transition-duration: 0.2s
+    transition-duration: 0.2s;
   }
 }
 
 .opacity-none:hover {
-  opacity: 1.0;
+  opacity: 1;
 }
 
 .main-visual {
@@ -50,8 +50,8 @@ a {
   background-position: center;
   
   &-content {
-      width: 100%;
-      background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 
