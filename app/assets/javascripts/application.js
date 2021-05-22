@@ -19,11 +19,11 @@
 
 $(document).ready(function () {
   $(".slideshow").skippr({
-    transition          : 'fade',
+    transition          : "fade",
     speed               : 1000,
-    easing              : 'easeOutQuart',
-    navType             : 'bubble',
-    childrenElementType : 'img',
+    easing              : "easeOutQuart",
+    navType             : "bubble",
+    childrenElementType : "img",
     arrows              : true,
     autoPlay            : true,
     autoPlayDuration    : 3000,
