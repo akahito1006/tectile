@@ -11,6 +11,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    # override below
     build_resource(sign_up_params)
     resource.save
     yield resource if block_given?
@@ -27,7 +28,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      # 新規登録失敗 -> ログイン画面へ
+      # ragistration failed -> login page
       render "public/sessions/new"
     end
   end
