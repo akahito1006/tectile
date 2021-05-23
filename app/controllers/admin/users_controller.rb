@@ -21,19 +21,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
-    begin
-      @user = User.find(params[:id])
-    rescue
-      redirect_to "/", notice: "エラーが発生しました"
-    end
+    set_user(params[:id])
   end
 
   def update
-    begin
-      @user = User.find(params[:id])
-    rescue
-      redirect_to "/", notice: "エラーが発生しました"
-    end
+    set_user(params[:id])
     if @user.update(user_params)
       redirect_to admin_user_path(params[:id]), notice: "会員情報を変更しました"
     else
@@ -50,7 +42,6 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-
   def user_params
     params.require(:user).permit(:name, :email)
   end
