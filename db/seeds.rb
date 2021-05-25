@@ -14,6 +14,12 @@
   )
 end
 
+User.create!(
+  name:       "ゲストユーザー",
+  email:      "guest@mail.com",
+  password:   "guestpw"
+  )
+
 Admin.create!(
   email:      "admin@admin.com",
   password:   "administrator"

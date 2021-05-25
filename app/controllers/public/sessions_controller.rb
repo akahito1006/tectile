@@ -18,7 +18,7 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # 会員ゲストログイン
+  # guest member login 
   def guest_session
     user = User.find_or_create_by!(email: "guest@mail.com") do |guest|
       guest.name = "ゲストユーザー"
