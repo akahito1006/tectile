@@ -20,9 +20,9 @@ class Public::SessionsController < Devise::SessionsController
 
   # 会員ゲストログイン
   def guest_session
-    user = User.find_or_create_by!(email: "testuser1@mail.com") do |guest|
-      guest.name = "testuser1"
-      guest.password = "testpw"
+    user = User.find_or_create_by!(email: "guest@mail.com") do |guest|
+      guest.name = "ゲストユーザー"
+      guest.password = "guestpw"
     end
 
     sign_in user
