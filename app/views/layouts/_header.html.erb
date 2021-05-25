@@ -1,0 +1,83 @@
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <nav class="navbar navbar-expand-md navbar-light px-0 bg-light">
+              <%= link_to  root_path, class:"my-0" do %>
+                <%= image_tag "logo.png", class:"logo" %>
+              <% end %>
+              <h6 class="my-auto offset-md-1">
+                <% if current_user %>
+                  <i class="h4 fas fa-user-check"></i>ようこそ、<%= current_user.name %>様！
+                <% elsif current_admin %>
+                  <i class="h4 fas fa-key"></i>管理者としてログインしています！
+                <% else %>
+                  <!--no text for non-member-->
+                <% end %>
+              </h6>
+              
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcontent" aria-controls="navbarcontent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              
+              <div class="collapse navbar-collapse" id="navbarcontent">
+                <ul class="navbar-nav ml-auto">
+                  <!--member-->
+                  <% if current_user %>
+                    <li class="nav-item">
+                      <%= link_to "マイページ", user_path(current_user.id), class:"nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "記事リスト", articles_path, class:"nav-link" %>
+                    </li>
+                    <li class="nav-item" type="button" data-toggle="collapse" data-target="#navbarsearch" aria-controls="navbarsearch" aria-expanded="false" aria-label="Toggle search">
+                      <p class="nav-link mb-0">検索</p>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "投稿する", new_article_path, class:"nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "ログアウト", destroy_user_session_path, class:"nav-link", method: :delete %>
+                    </li>
+                    
+                  <!--admin-->
+                  <% elsif current_admin %>
+                    <li class="nav-item">
+                      <%= link_to "会員リスト", admin_users_path, class:"nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "記事リスト", admin_articles_path, class:"nav-link" %>
+                    </li>
+                    <li class="nav-item" type="button" data-toggle="collapse" data-target="#navbarsearch" aria-controls="navbarsearch" aria-expanded="false" aria-label="Toggle search">
+                      <p class="nav-link mb-0">検索</p>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "ログアウト", destroy_admin_session_path, class:"nav-link", method: :delete %>
+                    </li>
+                    
+                  <!--non-member-->
+                  <% else %>
+                    <li class="nav-item">
+                      <%= link_to "About", about_path, class:"nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "記事リスト", articles_path, class:"nav-link" %>
+                    </li>
+                    <li class="nav-item" type="button" data-toggle="collapse" data-target="#navbarsearch" aria-controls="navbarsearch" aria-expanded="false" aria-label="Toggle search">
+                      <p class="nav-link mb-0">検索</p>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "ログイン", new_user_session_path, class:"nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "管理者ログイン", new_admin_session_path, class:"nav-link" %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </nav>
+          </div>
+          
+          <%= render partial: 'layouts/searchform' %>
+          <!-- has #navbarsearch in it -->
+        </div>
+      </div>

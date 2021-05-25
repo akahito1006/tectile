@@ -1,0 +1,18 @@
+<!--admin：search（users, articles）-->
+<% if current_admin %>
+  <div class="col collapse navbar-collapse" id="navbarsearch">
+    <%= form_with url: admin_search_path, method: :get, local: true, class:"form-inline" do |f| %>
+      <%= f.text_field :word_for_search, class:"form-control", size:'40',placeholder: "キーワードを入力" %>
+      <%= f.select :range_option, options_for_select([["記事検索"], ["会員検索"]]), {}, {class:"btn btn-outline-secondary"} %>
+      <%= f.submit "Search", class:"btn btn-outline-success" %>
+    <% end %>
+  </div>
+<!--member/non-member：search (articles) -->
+<% else %>
+  <div class="col collapse navbar-collapse" id="navbarsearch">
+    <%= form_with url: search_path, method: :get, local: true, class:"form-inline" do |f| %>
+      <%= f.text_field :word_for_search, class:"form-control", size:'40',placeholder: "キーワードを入力" %>
+      <%= f.submit "Search", class:"btn btn-outline-success" %>
+    <% end %>
+  </div>
+<% end %>
