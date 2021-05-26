@@ -6,11 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# testuser generator
-# require "net/http"
-# require "uri"
-# require "json"
-
+# random user generator
 10.times do |n|
   uri = URI.parse("https://randomuser.me/api/")
   json = Net::HTTP.get(uri)
