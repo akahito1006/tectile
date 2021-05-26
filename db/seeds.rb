@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# random user generator
+# random user generator powered by https://randomuser.me/api/
 10.times do |n|
   uri = URI.parse("https://randomuser.me/api/")
   json = Net::HTTP.get(uri)
@@ -17,9 +17,7 @@
     email:    person['results'][0]['email'],
     password: "testpw"
   )
-
 end
-
 
 User.create!(
   name:       "ゲストユーザー",
@@ -49,7 +47,7 @@ end
 
 Article.create!(
   user_id:  1,
-  title:    "8件目の投稿記事のタイトル",
+  title:    "「人とモノ」IoTのこれから",
   content:
     "Lorem ipsum dolor sit amet,\r\n
     consectetur adipiscing elit, \r\n
@@ -64,15 +62,15 @@ Article.create!(
 )
 
 Article.create!(
-  user_id:  1,
-  title:    "9件目の投稿記事のタイトル",
+  user_id:  2,
+  title:    "iPadminiを仕事の相棒にしたい！ほしい！",
   content:
-    "Lorem ipsum dolor sit amet,\r\n
-    consectetur adipiscing elit, \r\n
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \r\n
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \r\n
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \r\n
-    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n
+    "「とてもすごい。。。」\r\n
+    \r\n
+    片手でもしっかり持ってApplePencilで書きこむことができます。\r\n
+    \r\n
+    サイズ感は写真を見てください！\r\n
+    \r\n
     ◇画像借用元\r\n
     '使いやすいiPadminiのフリー素材' (https://www.pakutaso.com/20190550142ipadmini-6.html)\r\n
     'Applepencilで画面に書き込む男性のフリー素材' (https://www.pakutaso.com/20190530122applepencil-2.html)\r\n
@@ -82,14 +80,28 @@ Article.create!(
 
 Article.create!(
   user_id:  1,
-  title:    "10件目の投稿記事のタイトル",
+  title:    "Apple Watchで生活が捗るハック5選",
   content:
-    "Lorem ipsum dolor sit amet,\r\n
-    consectetur adipiscing elit, \r\n
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \r\n
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \r\n
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \r\n
-    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n
+    "スマートウォッチはいろいろな種類が出ていますが、Apple Watchはデザインと機能の両方が魅力です！\r\n
+    \r\n
+    家の中で身に着けていても大変便利なガジェットです。\r\n
+    \r\n
+    今回はApple Watchを買うと捗る5つのライフハックを紹介します。
+    \r\n
+    【ハック1.】 iPhoneがなくてもSuicaやApplePay(アップルペイ)など電子マネーで買い物ができる\r\n
+    \r\n
+    【ハック2.】 iPhoneを都度操作しなくてもメールやLINE(ライン)などの通知を見ることができる\r\n
+    \r\n
+    【ハック3.】 GPSを活用して健康やスポーツに必要なランニングやウォーキングのログ(記録)をつけることができる\r\n
+    \r\n
+    【ハック4.】 一日のライフログ(行動記録)を自動で取ることができる\r\n
+    \r\n
+    【ハック5.】 iPhoneがなくてもApple WatchとAirPods(エアポッズ)だけで音楽を持ち歩くことができる\r\n
+    \r\n
+    まだまだ魅力を伝えたいですが、デザイン面も非常に推しポイントです！写真をみてください！\r\n
+    \r\n
+    以上です！\r\n
+    \r\n
     ◇画像借用元\r\n
     '（AppleWatch）のフリー素材' (https://www.pakutaso.com/20190850239applewatch-4.html)\r\n
     'Apple Watch Series 4 と Apple Watch Series 3のフリー素材' (https://www.pakutaso.com/20180957270apple-watch-series-4-apple-watch-series-3.html)\r\n
