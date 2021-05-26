@@ -32,9 +32,9 @@
   
 <!--members-->
   <% if user_signed_in? %>
-    <!--Ajax Like button; create.js destroy.js -->
     <div class="row mb-3 ">
       <div class="col-md-9 px-0 mx-auto">
+        <!--Ajax Like button; create.js destroy.js -->
         <span id="likes_btn_<%= @article.id %>">
           <%= render partial: 'public/likes/like', locals: {article: @article} %>
         </span>
@@ -62,20 +62,20 @@
 <!--non-members-->
   <% else %>
     <!--HTML Like button; -> redirect_to /users/sign_in-->
-    <div class="row mb-3">
-      <div class="col-md-2">
+    <div class="row mb-3 ">
+      <div class="col-md-9 px-0 mx-auto">
+        <!--Ajax Like button; create.js destroy.js -->
         <%= link_to "いいね♡#{@article.likes_count}", article_likes_path(@article), class:"btn btn-primary", method: :post %>
       </div>
     </div>
     <!--HTML Comment list-->
-    <% @article.comments.each do |comment| %>
-      <div class="row mb-3">
-        <div class="col-md-9 px-0 mx-auto">
-          <%= comment.user.name %>
-          <%= comment.body %>
-        </div>
+    <div class="row mb-3 ">
+      <div class="col-md-9 px-0 mx-auto">
+        <table id="comments">
+          <%= render partial: 'public/comments/comment', locals: {article: @article} %>
+        </table>
       </div>
-    <% end %>
+    </div>
     
   <% end %>
 </div>
