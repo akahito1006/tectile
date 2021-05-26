@@ -46,8 +46,10 @@
     </div>
     <!--Ajax Comment list; create.js destroy.js-->
     <div class="row mb-3 ">
-      <div class="col-md-9 px-0 mx-auto" id="comments">
-        <%= render partial: 'public/comments/comment', locals: {article: @article} %>
+      <div class="col-md-9 px-0 mx-auto">
+        <table id="comments">
+          <%= render partial: 'public/comments/comment', locals: {article: @article} %>
+        </table>
       </div>
     </div>
     <!--Ajax cllapsible comment area; create.js-->

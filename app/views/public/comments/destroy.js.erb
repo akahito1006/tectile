@@ -1,1 +1,2 @@
-$('#comments').html("<%= escape_javascript(render partial: 'public/comments/comment', locals: {article: @article}) %>");
+$("#comments").html("<%= j(render partial: 'public/comments/comment', locals: {article: @article}) %>");
+$('.form-control').val("");
