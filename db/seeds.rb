@@ -6,13 +6,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# testuser generator
+# require "net/http"
+# require "uri"
+# require "json"
+
 10.times do |n|
+  uri = URI.parse("https://randomuser.me/api/")
+  json = Net::HTTP.get(uri)
+  person = JSON.parse(json)
+  
   User.create!(
-    name:     "testuser#{n + 1}",
-    email:    "testuser#{n + 1}@mail.com",
+    name:     person['results'][0]['login']['username'],
+    email:    person['results'][0]['email'],
     password: "testpw"
   )
+
 end
+
 
 User.create!(
   name:       "ゲストユーザー",
