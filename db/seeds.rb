@@ -30,31 +30,31 @@ Admin.create!(
   password:   "administrator"
 )
 
-7.times do |n|
-  Article.create!(
-    user_id:  1,
-    title:    "#{n + 1}件目の投稿記事のタイトル",
-    content:
-      "Lorem ipsum dolor sit amet,\r\n
-      consectetur adipiscing elit, \r\n
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \r\n
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \r\n
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \r\n
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    likes_count: 0
-  )
-end
+# 7.times do |n|
+#   Article.create!(
+#     user_id:  n + 1,
+#     title:    "#{n + 1}件目の投稿記事のタイトル",
+#     content:
+#       "Lorem ipsum dolor sit amet,\r\n
+#       consectetur adipiscing elit, \r\n
+#       sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \r\n
+#       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \r\n
+#       Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \r\n
+#       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+#     likes_count: 0
+#   )
+# end
 
 Article.create!(
-  user_id:  1,
-  title:    "「人とモノ」IoTのこれから",
+  user_id:  3,
+  title:    "気になる言葉「IoT」？",
   content:
-    "Lorem ipsum dolor sit amet,\r\n
-    consectetur adipiscing elit, \r\n
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \r\n
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \r\n
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \r\n
-    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n
+    "下記は引用です。「ITトレンドのIT用語集　IoTとは - 意味の解説（https://it-trend.jp/words/iot）」\r\n
+    >IoTとは、Internet of Things の略である。日本語では、「モノのインターネット」と訳される事が多い。\r\n
+    \r\n
+    >これまでインターネットに接続されていなかった多くの物理的な「モノ」に、センサーや電子デバイスを埋め込んでインターネットに接続することで、それらの「モノ」がデータや情報をやりとりすることが可能になる。\r\n
+    >このような仕組みをIoTという。\r\n
+    \r\n
     ◇画像借用元\r\n
     'Technology photo created by rawpixel.com - www.freepik.com' (https://www.freepik.com/photos/technology)\r\n
     'Gerd AltmannによるPixabayからの画像'(https://pixabay.com/ja/)",
@@ -109,74 +109,51 @@ Article.create!(
   likes_count: 0
 )
 
+5.times do |n|
   Like.create!(
-    user_id:      1,
-    article_id:   10
+    user_id:      n + 2,
+    article_id:   3
   )
+end
+
+3.times do |n|
   Like.create!(
-    user_id:      2,
-    article_id:   10
-  )
-  
-10.times do |n|
-  Like.create!(
-    user_id:      3,
-    article_id:   10
+    user_id:      n + 3,
+    article_id:   2
   )
 end
 
 2.times do |n|
   Comment.create!(
-    user_id:      n+2,
-    article_id:   n+1,
-    body: "私も同感です。Lorem ipsum dolor sit amet"
+    user_id:      n + 2,
+    article_id:   n + 1,
+    body: "いいですね"
   )
 end
 
-# ArticleImage create #1
-image = ArticleImage.new
-image.article_id = 10
-image.image = File.open("./app/assets/images/macbook1990_TP_V4.jpg")
-image.save
+imageArray = [
+  # ArticleImage create #1-2 for article_id: 1
+  ["./app/assets/images/hands-digital-universe-background.jpg",
+    "./app/assets/images/smart-home_640.jpg"
+  ],
+  # ArticleImage create #3-5 for article_id: 2
+  ["./app/assets/images/ipad424249_TP_V4.jpg",
+    "./app/assets/images/ipad424248_TP_V4.jpg",
+    "./app/assets/images/ipad424240_TP_V4.jpg"
+  ],
+  # ArticleImage create #6-8 for article_id: 3
+  ["./app/assets/images/macbook1990_TP_V4.jpg",
+    "./app/assets/images/APgoriFTHG5756_TP_V4.jpg",
+    "./app/assets/images/IPPAKU9107_TP_V4.jpg"
+  ]
+]
 
-# ArticleImage create #2
-image = ArticleImage.new
-image.article_id = 10
-image.image = File.open("./app/assets/images/APgoriFTHG5756_TP_V4.jpg")
-image.save
 
-# ArticleImage create #3
-image = ArticleImage.new
-image.article_id = 10
-image.image = File.open("./app/assets/images/IPPAKU9107_TP_V4.jpg")
-image.save
-
-# ArticleImage create #4
-image = ArticleImage.new
-image.article_id = 9
-image.image = File.open("./app/assets/images/ipad424249_TP_V4.jpg")
-image.save
-
-# ArticleImage create #5
-image = ArticleImage.new
-image.article_id = 9
-image.image = File.open("./app/assets/images/ipad424248_TP_V4.jpg")
-image.save
-
-# ArticleImage create #6
-image = ArticleImage.new
-image.article_id = 9
-image.image = File.open("./app/assets/images/ipad424240_TP_V4.jpg")
-image.save
-
-# ArticleImage create #7
-image = ArticleImage.new
-image.article_id = 8
-image.image = File.open("./app/assets/images/hands-digital-universe-background.jpg")
-image.save
-
-# ArticleImage create #8
-image = ArticleImage.new
-image.article_id = 8
-image.image = File.open("./app/assets/images/smart-home_640.jpg")
-image.save
+imageArray.each.with_index(1) do |array, n|
+  array.each do |img|
+    image = ArticleImage.new
+    image.article_id = n
+    image.image = File.open(img)
+    image.save
+  end
+end
