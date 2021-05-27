@@ -141,7 +141,7 @@ end
 2.times do |n|
   Comment.create!(
     user_id:      3,
-    article_id:   n + 1,
+    article_id:   n + 3,
     body: "私も持っています！"
   )
 end
