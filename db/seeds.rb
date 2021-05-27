@@ -6,12 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# random user generator powered by https://randomuser.me/api/
+# random user generator
 10.times do |n|
   uri = URI.parse("https://randomuser.me/api/")
   json = Net::HTTP.get(uri)
   person = JSON.parse(json)
-  
   User.create!(
     name:     person['results'][0]['login']['username'],
     email:    person['results'][0]['email'],
@@ -30,8 +29,9 @@ Admin.create!(
   password:   "administrator"
 )
 
+# Article <--- (Like, Comment, ArticleImage) 
 Article.create!(
-  user_id:  3,
+  user_id:  11,
   title:    "気になる言葉「IoT」？",
   content:
     "下記は引用です。「ITトレンドのIT用語集　IoTとは - 意味の解説（https://it-trend.jp/words/iot）」\r\n
@@ -48,7 +48,7 @@ Article.create!(
 
 Article.create!(
   user_id:  2,
-  title:    "iPadminiを仕事の相棒にしたい！ほしい！",
+  title:    "iPadminiを買いました",
   content:
     "「とてもすごい。。。」\r\n
     \r\n
@@ -64,8 +64,25 @@ Article.create!(
 )
 
 Article.create!(
-  user_id:  1,
-  title:    "Apple Watchで生活が捗るハック5選",
+  user_id:  3,
+  title:    "HTC VIVE ProでINDEXコンを使う方法",
+  content:
+    "ベースステーション2.0が必要です。\r\n
+    \r\n
+    あとは他のコントローラやトラッカーと同じです。\r\n
+    \r\n
+    INDEXコントローラは電池の持ちがかなり改善されています。\r\n
+    \r\n
+    バッテリー不足になったらモバイルバッテリーで充電しながらプレイするとよいでしょう。\r\n
+    \r\n
+    ◇画像\r\n
+    ⒸTecTile",
+  likes_count: 0
+)
+
+Article.create!(
+  user_id:  4,
+  title:    "Apple Watchで生活が捗るハック3選",
   content:
     "スマートウォッチはいろいろな種類が出ていますが、Apple Watchはデザインと機能の両方が魅力です！\r\n
     \r\n
@@ -79,11 +96,7 @@ Article.create!(
     \r\n
     【ハック3.】 GPSを活用して健康やスポーツに必要なランニングやウォーキングのログ(記録)をつけることができる\r\n
     \r\n
-    【ハック4.】 一日のライフログ(行動記録)を自動で取ることができる\r\n
-    \r\n
-    【ハック5.】 iPhoneがなくてもApple WatchとAirPods(エアポッズ)だけで音楽を持ち歩くことができる\r\n
-    \r\n
-    まだまだ魅力を伝えたいですが、デザイン面も非常に推しポイントです！写真をみてください！\r\n
+    まだまだ魅力を伝えたいですが、デザイン面も推しポイントです！写真をみてください！\r\n
     \r\n
     以上です！\r\n
     \r\n
@@ -94,29 +107,46 @@ Article.create!(
   likes_count: 0
 )
 
+# Likes
+3.times do |n|
+  Like.create!(
+    user_id:      11,
+    article_id:   n + 1
+  )
+end
+
 5.times do |n|
   Like.create!(
-    user_id:      n + 2,
+    user_id:      n + 1,
+    article_id:   4
+  )
+end
+
+5.times do |n|
+  Like.create!(
+    user_id:      n + 1,
     article_id:   3
   )
 end
 
-3.times do |n|
-  Like.create!(
-    user_id:      n + 3,
-    article_id:   2
-  )
-end
-
-2.times do |n|
+# Comments
+4.times do |n|
   Comment.create!(
-    user_id:      n + 2,
+    user_id:      1,
     article_id:   n + 1,
     body: "いいですね"
   )
 end
 
-# ArticleImage insert
+2.times do |n|
+  Comment.create!(
+    user_id:      3,
+    article_id:   n + 1,
+    body: "私も持っています！"
+  )
+end
+
+# ArticleImage create
 imageArray = [
   # ArticleImage create #1-2 for article_id: 1
   ["./app/assets/images/hands-digital-universe-background.jpg",
@@ -128,6 +158,10 @@ imageArray = [
     "./app/assets/images/ipad424240_TP_V4.jpg"
   ],
   # ArticleImage create #6-8 for article_id: 3
+  ["./app/assets/images/article_4b.jpg",
+    "./app/assets/images/article_4a.jpg"
+  ],
+  # ArticleImage create #9-11 for article_id: 4
   ["./app/assets/images/macbook1990_TP_V4.jpg",
     "./app/assets/images/APgoriFTHG5756_TP_V4.jpg",
     "./app/assets/images/IPPAKU9107_TP_V4.jpg"
