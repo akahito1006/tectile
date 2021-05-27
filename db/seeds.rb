@@ -131,6 +131,7 @@ end
   )
 end
 
+# ArticleImage insert
 imageArray = [
   # ArticleImage create #1-2 for article_id: 1
   ["./app/assets/images/hands-digital-universe-background.jpg",
@@ -147,7 +148,6 @@ imageArray = [
     "./app/assets/images/IPPAKU9107_TP_V4.jpg"
   ]
 ]
-
 
 imageArray.each.with_index(1) do |array, n|
   array.each do |img|
